@@ -122,7 +122,7 @@ public class MenuNavigation {
 
 
     private void askBuyMagicProcess() {
-
+        //
     }
 
 
