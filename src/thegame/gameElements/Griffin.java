@@ -9,5 +9,9 @@ public class Griffin extends Unit {
     static int initiative = 15;
     static String letter = "G";
     static String name = "Griff";
+
+    public Griffin() {
+        super(price, damageMin, damageMax, health, speed, initiative, letter, name);
+    }
 //    public static String imgPath = "imgs/griffin_small.png";
 }

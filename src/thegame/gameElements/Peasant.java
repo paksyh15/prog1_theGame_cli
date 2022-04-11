@@ -9,5 +9,9 @@ public class Peasant extends Unit {
     static int initiative = 8;
     static String letter = "P";
     static String name = "Földműves";
+
+    public Peasant() {
+        super(price, damageMin, damageMax, health, speed, initiative, letter, name);
+    }
 //    public static String imgPath = "imgs/peasant_small.png";
 }

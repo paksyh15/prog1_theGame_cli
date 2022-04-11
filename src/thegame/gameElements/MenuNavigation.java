@@ -6,10 +6,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuNavigation {
-    public void pressAnyKey() {
+    public void pressEnterKey() {
         try {
+            System.out.println("Folytatáshoz nyomj ENTER-t...");
             System.in.read();
-            System.out.println("Folytatáshoz nyomj meg egy gombot...");
         } catch (Exception e) {
         }
     }
@@ -62,9 +62,9 @@ public class MenuNavigation {
                 uIn = -1;
             }
             switch (uIn) {
-                case 1 -> askBuyUnitsProcess();
-                case 2 -> askBuyMagicProcess();
-                case 3 -> askBuyAttrsProcess();
+                case 1 -> this.askBuyUnitsProcess();
+                case 2 -> this.askBuyMagicProcess();
+                case 3 -> this.askBuyAttrsProcess();
             }
         }
     }
@@ -78,7 +78,7 @@ public class MenuNavigation {
             for (UnitCell uc : player.ownedCells) {
                 System.out.printf("%dx %s\n", uc.amount, uc.unit.name);
             }
-            System.out.printf("Mit akarsz?\n[1] Földműves (%d pénz)\n[2] Íjász(%d pénz)\n[3] Griff(%d pénz)\n\n[4] Vissza\n: ", Peasant.price, Archer.price, Griffin.price);
+            System.out.printf("Mit akarsz?\n[1] Földműves (%d pénz)\n[2] Íjász (%d pénz)\n[3] Griff (%d pénz)\n\n[4] Vissza\n: ", Peasant.price, Archer.price, Griffin.price);
             Scanner sc = new Scanner(System.in);
             try {
                 uIn = sc.nextInt();
@@ -89,7 +89,7 @@ public class MenuNavigation {
             if(uIn == 4) isUserDone = true;
         }
         if(isUserDone) return;
-        Unit unitToBuy = new Unit[]{new Peasant(), new Archer(), new Griffin()}[uIn - 1];
+        Unit unitToBuy = (new Unit[]{new Peasant(), new Archer(), new Griffin()})[uIn - 1];
         uIn = -1;
         while (uIn == -1) {
             System.out.println("Mennyit akarsz? (nyílván 0-nál többet)\n: ");
@@ -102,12 +102,12 @@ public class MenuNavigation {
         }
         int amountToBuy = uIn;
         UnitCell unitCell = new UnitCell(unitToBuy, amountToBuy);
-        if (buyUnits(Main.gameLogic.getPlayer(1), unitCell)) {
+        if (this.buyUnits(Main.gameLogic.getPlayer(1), unitCell)) {
             System.out.println("Siker!");
         } else {
             System.out.println("Hiba! Erre nem telik!");
         }
-        pressAnyKey();
+        pressEnterKey();
     }
 
     private boolean buyUnits(Player player, UnitCell unitCell) {

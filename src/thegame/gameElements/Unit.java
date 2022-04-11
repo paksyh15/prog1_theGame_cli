@@ -2,41 +2,49 @@ package thegame.gameElements;
 
 //import javafx.scene.image.Image;
 
-abstract public class Unit {
+public abstract class Unit {
     int price;
     int damageMin;
     int damageMax;
     int health;
     int speed;
     int initiative;
-    String letter = "";
-    String name = "";
-//    public static String imgPath;
-    // special attack
+    String letter = null;
+    String name = null;
 
+    public Unit(int price, int damageMin, int damageMax, int health, int speed, int initiative, String letter, String name) {
+        this.price = price;
+        this.damageMin = damageMin;
+        this.damageMax = damageMax;
+        this.health = health;
+        this.speed = speed;
+        this.initiative = initiative;
+        this.letter = letter;
+        this.name = name;
+    }
 
     public int getPrice() {
-        return price;
+        return this.price;
     }
 
     public int getDamageMin() {
-        return damageMin;
+        return this.damageMin;
     }
 
     public int getDamageMax() {
-        return damageMax;
+        return this.damageMax;
     }
 
     public int getHealth() {
-        return health;
+        return this.health;
     }
 
     public int getSpeed() {
-        return speed;
+        return this.speed;
     }
 
     public int getInitiative() {
-        return initiative;
+        return this.initiative;
     }
 
     /*public void setHealth(int health) {
