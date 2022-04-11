@@ -74,7 +74,7 @@ public class MenuNavigation {
         int uIn = -1;
         boolean isUserDone = false;
         while (uIn == -1) {
-            System.out.println("Meglévö egységek:\n");
+            System.out.println("Meglévö egységek:");
             for (UnitCell uc : player.ownedCells) {
                 System.out.printf("%dx %s\n", uc.amount, uc.unit.name);
             }
@@ -86,9 +86,9 @@ public class MenuNavigation {
                 uIn = -1;
             }
             if (!(uIn <= 4 && uIn >= 1)) uIn = -1;
-            if(uIn == 4) isUserDone = true;
+            if (uIn == 4) isUserDone = true;
         }
-        if(isUserDone) return;
+        if (isUserDone) return;
         Unit unitToBuy = (new Unit[]{new Peasant(), new Archer(), new Griffin()})[uIn - 1];
         uIn = -1;
         while (uIn == -1) {
@@ -102,12 +102,13 @@ public class MenuNavigation {
         }
         int amountToBuy = uIn;
         UnitCell unitCell = new UnitCell(unitToBuy, amountToBuy);
-        if (this.buyUnits(Main.gameLogic.getPlayer(1), unitCell)) {
+        if (this.buyUnits(player, unitCell)) {
             System.out.println("Siker!");
         } else {
             System.out.println("Hiba! Erre nem telik!");
+            pressEnterKey();
         }
-        pressEnterKey();
+        //pressEnterKey();
     }
 
     private boolean buyUnits(Player player, UnitCell unitCell) {
@@ -122,7 +123,40 @@ public class MenuNavigation {
 
 
     private void askBuyMagicProcess() {
-        //
+        Player player = Main.gameLogic.getPlayer(1);
+        int uIn = -1;
+        boolean isUserDone = false;
+        while (uIn == -1) {
+            System.out.println("Meglévö varázslatok:");
+            for (Magic magic : player.ownedMagic) {
+                System.out.printf("%s (%d mana)\n", magic.getName(), magic.getMana());
+            }
+            System.out.printf("Mit akarsz?\n[1] Villámcsapás (%d pénz, %d mana)\n[2] Tűzlabda (%d pénz, %d mana)\n[3] Feltámadás (%d pénz, %d mana)\n\n[4] Vissza\n: ", LightningBolt.price, LightningBolt.mana, Fireball.price, Fireball.mana, Revive.price, Revive.mana);
+            Scanner sc = new Scanner(System.in);
+            try {
+                uIn = sc.nextInt();
+            } catch (Exception e) {
+                uIn = -1;
+            }
+            if (!(uIn <= 4 && uIn >= 1)) uIn = -1;
+            if (uIn == 4) isUserDone = true;
+        }
+        if (isUserDone) return;
+        Magic magicToBuy = (new Magic[]{new LightningBolt(), new Fireball(), new Revive()})[uIn - 1];
+        buyMagic(player, magicToBuy);
+    }
+
+    private boolean buyMagic(Player player, Magic magic) {
+        for (Magic m : player.ownedMagic) {
+            if (m.getName().equals(magic.getName()))
+                return false;
+        }
+        if (player.getBalance() >= magic.getPrice()) {
+            player.setBalance(player.getBalance() - magic.getPrice());
+            player.ownedMagic.add(magic);
+            return true;
+        }
+        return false;
     }
 
 

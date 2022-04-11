@@ -13,5 +13,4 @@ public class Peasant extends Unit {
     public Peasant() {
         super(price, damageMin, damageMax, health, speed, initiative, letter, name);
     }
-//    public static String imgPath = "imgs/peasant_small.png";
 }

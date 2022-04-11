@@ -13,5 +13,4 @@ public class Griffin extends Unit {
     public Griffin() {
         super(price, damageMin, damageMax, health, speed, initiative, letter, name);
     }
-//    public static String imgPath = "imgs/griffin_small.png";
 }

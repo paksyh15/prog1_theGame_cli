@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    Integer money = null;
+    private Integer money = null;
     // statok
     public PlayerStats stats = new PlayerStats();
     public List<UnitCell> ownedCells = new ArrayList<UnitCell>();
+    public List<Magic> ownedMagic = new ArrayList<Magic>();
 
     public Player(Integer money) {
         if (money >= 0)

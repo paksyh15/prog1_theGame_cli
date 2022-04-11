@@ -6,8 +6,6 @@ import thegame.Main;
 
 public class GameLogic {
 
-    private boolean isGameStarted = false;
-
     private Player player1 = new Player();
     private Player player2 = new Player(1000);
     private Board board = new Board();
@@ -17,7 +15,6 @@ public class GameLogic {
     }
 
     public boolean setDifficulty(int difficulty) {
-        if(this.isGameStarted) return false;
         Integer money = null;
         switch (difficulty) {
             case 0:
@@ -34,10 +31,6 @@ public class GameLogic {
         player1.setBalance(money);
 
         return true;
-    }
-
-    public boolean isGameStarted() {
-        return isGameStarted;
     }
 
     public Player getPlayer(int num) {
