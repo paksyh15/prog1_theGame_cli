@@ -43,11 +43,12 @@ public class MenuNavigation {
         }
     }
 
+    @Deprecated
     public void printPlayerStats(Player player, boolean isMenu) {
         if (!isMenu)
-            System.out.printf("Támadás: %d\nVédekezés: %d\nVarázserő: %d\nTudás: %d\nMorál: %d\nSzerencse: %d\n", player.stats.attack, player.stats.defense, player.stats.magic, player.stats.intelligence, player.stats.moral, player.stats.luck);
+            System.out.printf("Támadás: %d\nVédekezés: %d\nVarázserő: %d\nTudás: %d\nMorál: %d\nSzerencse: %d\n", player.stats.attack.value, player.stats.defense.value, player.stats.magic.value, player.stats.intelligence.value, player.stats.moral.value, player.stats.luck.value);
         else
-            System.out.printf("[1] Támadás: %d\n[2] Védekezés: %d\n[3] Varázserő: %d\n[4] Tudás: %d\n[5] Morál: %d\n[6] Szerencse: %d\n", player.stats.attack, player.stats.defense, player.stats.magic, player.stats.intelligence, player.stats.moral, player.stats.luck);
+            System.out.printf("[1] Támadás: %d\n[2] Védekezés: %d\n[3] Varázserő: %d\n[4] Tudás: %d\n[5] Morál: %d\n[6] Szerencse: %d\n", player.stats.attack.value, player.stats.defense.value, player.stats.magic.value, player.stats.intelligence.value, player.stats.moral.value, player.stats.luck.value);
     }
 
     public void askChooseBuy() {
