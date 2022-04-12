@@ -1,6 +1,11 @@
 package thegame.gameElements;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlayerStats {
+    List<Stat> statsList = new ArrayList<>();
+
     Stat attack = new Stat("Támadás", 1);
     Stat defense = new Stat("Védekezés", 1);
     Stat magic = new Stat("Varázserő", 1);
@@ -8,13 +13,15 @@ public class PlayerStats {
     Stat moral = new Stat("Morál", 1);
     Stat luck = new Stat("Szerencse", 1);
 
-    private class Stat {
-        String name = null;
-        Integer value = null;
+
+    public class Stat {
+        String name;
+        Integer value;
 
         public Stat(String name, Integer value) {
             this.name = name;
             this.value = value;
+            statsList.add(this);
         }
 
         public String getName() {

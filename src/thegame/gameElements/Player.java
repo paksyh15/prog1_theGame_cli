@@ -9,6 +9,7 @@ public class Player {
     public PlayerStats stats = new PlayerStats();
     public List<UnitCell> ownedCells = new ArrayList<UnitCell>();
     public List<Magic> ownedMagic = new ArrayList<Magic>();
+    public Integer attrPrice = 5;
 
     public Player(Integer money) {
         if (money >= 0)

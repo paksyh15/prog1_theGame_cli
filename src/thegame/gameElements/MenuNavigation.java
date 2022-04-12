@@ -15,7 +15,7 @@ public class MenuNavigation {
     }
 
     public int askDifficulty() {  // 0 / 1 / 2 / -1 err
-        System.out.printf("Nehézség\n\t[0] (könnyü)\n\t[1] (közepes)\n\t[2] Nehéz\n: ");
+        System.out.print("Nehézség\n\t[0] (könnyü)\n\t[1] (közepes)\n\t[2] Nehéz\n: ");
         Scanner sc = new Scanner(System.in);
         int inDiff = -1;
         try {
@@ -78,7 +78,10 @@ public class MenuNavigation {
             for (UnitCell uc : player.ownedCells) {
                 System.out.printf("%dx %s\n", uc.amount, uc.unit.name);
             }
-            System.out.printf("Mit akarsz?\n[1] Földműves (%d pénz)\n[2] Íjász (%d pénz)\n[3] Griff (%d pénz)\n\n[4] Vissza\n: ", Peasant.price, Archer.price, Griffin.price);
+            System.out.printf("Mit akarsz?\n\nPénzed: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Földműves (%d pénz)\n[2] Íjász (%d pénz)\n[3] Griff (%d pénz)\n\n[4] Vissza\n: ",
+                    Peasant.price,
+                    Archer.price,
+                    Griffin.price);
             Scanner sc = new Scanner(System.in);
             try {
                 uIn = sc.nextInt();
@@ -131,7 +134,13 @@ public class MenuNavigation {
             for (Magic magic : player.ownedMagic) {
                 System.out.printf("%s (%d mana)\n", magic.getName(), magic.getMana());
             }
-            System.out.printf("Mit akarsz?\n[1] Villámcsapás (%d pénz, %d mana)\n[2] Tűzlabda (%d pénz, %d mana)\n[3] Feltámadás (%d pénz, %d mana)\n\n[4] Vissza\n: ", LightningBolt.price, LightningBolt.mana, Fireball.price, Fireball.mana, Revive.price, Revive.mana);
+            System.out.printf("Mit akarsz?\n\nPénzed: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Villámcsapás (%d pénz, %d mana)\n[2] Tűzlabda (%d pénz, %d mana)\n[3] Feltámadás (%d pénz, %d mana)\n\n[4] Vissza\n: ",
+                    LightningBolt.price,
+                    LightningBolt.mana,
+                    Fireball.price,
+                    Fireball.mana,
+                    Revive.price,
+                    Revive.mana);
             Scanner sc = new Scanner(System.in);
             try {
                 uIn = sc.nextInt();
@@ -143,7 +152,12 @@ public class MenuNavigation {
         }
         if (isUserDone) return;
         Magic magicToBuy = (new Magic[]{new LightningBolt(), new Fireball(), new Revive()})[uIn - 1];
-        buyMagic(player, magicToBuy);
+        if (this.buyMagic(player, magicToBuy)) {
+            System.out.println("Siker!");
+        } else {
+            System.out.println("Hiba! Erre nem telik, vagy már megvetted!");
+            pressEnterKey();
+        }
     }
 
     private boolean buyMagic(Player player, Magic magic) {
@@ -161,7 +175,64 @@ public class MenuNavigation {
 
 
     private void askBuyAttrsProcess() {
+        Player player = Main.gameLogic.getPlayer(1);
+        int uIn;
+        boolean isUserDone = false;
+        while (!isUserDone) {
+            uIn = -1;
+            while (uIn == -1) {
+            /*System.out.println("Jelenlegi tulajdonságpontjaid:");
+            for (PlayerStats.Stat stat : player.stats.statsList) {
+                System.out.printf("%s - %d / 10\n", stat.name, stat.value);
+            }*/
+                System.out.printf("Mit akarsz?\n\nPénzed: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Támadás - jelenlegi szint: %d\n[2] Védekezés - jelenlegi szint: %d\n[3] Varázserő - jelenlegi szint: %d\n[4] Tudás - jelenlegi szint: %d\n[5] Morál - jelenlegi szint: %d\n[6] Szerencse - jelenlegi szint: %d\n\n[7] Kész: ",
+                        player.stats.attack.value,
+                        player.stats.defense.value,
+                        player.stats.magic.value,
+                        player.stats.intelligence.value,
+                        player.stats.moral.value,
+                        player.stats.luck.value);
+                Scanner sc = new Scanner(System.in);
+                try {
+                    uIn = sc.nextInt();
+                } catch (Exception e) {
+                    uIn = -1;
+                }
+                if (!(uIn <= 7 && uIn >= 1)) uIn = -1;
+                if (uIn == 7) isUserDone = true;
+            }
+            if (isUserDone) return;
+            PlayerStats.Stat chosenStat = (new PlayerStats.Stat[]{
+                    player.stats.attack,
+                    player.stats.defense,
+                    player.stats.magic,
+                    player.stats.intelligence,
+                    player.stats.moral,
+                    player.stats.luck
+            })[uIn - 1];
+            if (this.buyAttr(player, chosenStat)) {
+                System.out.println("Siker!");
+            } else {
+                System.out.printf("Hiba! Erre nem telik, vagy a(z) %s tulajdonságod már 10-es szintű!\n",
+                        chosenStat.name);
+            }
+        }
+    }
 
+    private boolean buyAttr(Player player, PlayerStats.Stat stat) {
+        PlayerStats.Stat playerStat = null;
+        for (PlayerStats.Stat stat2 : player.stats.statsList) {
+            if (stat2.name.equals(stat.name)) {
+                playerStat = stat2;
+                break;
+            }
+        }
+        if (player.getBalance() - player.attrPrice < 0 || stat.value >= 10)
+            return false;
+        player.setBalance(player.getBalance() - player.attrPrice);
+        playerStat.setValue(playerStat.getValue() + 1);
+        player.attrPrice = (int) (Math.ceil(player.attrPrice.doubleValue() * 1.1) + 0.5);
+        return true;
     }
 
 
