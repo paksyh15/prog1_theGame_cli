@@ -52,14 +52,15 @@ public class MenuNavigation {
 
     public void askChooseBuy() {
 
-        Scanner sc = new Scanner(System.in);
         int uIn = -1;
         while (uIn != 4) {
             System.out.println("Válassz!\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Egységek vásárlása\n[2] Varázslatok vásárlása\n[3] Képességpontok vásárlása\n[4] Kész\n: ");
+            Scanner sc = new Scanner(System.in);
             try {
                 uIn = sc.nextInt();
             } catch (Exception e) {
                 uIn = -1;
+                continue;
             }
             switch (uIn) {
                 case 1 -> this.askBuyUnitsProcess();
@@ -185,7 +186,8 @@ public class MenuNavigation {
             for (PlayerStats.Stat stat : player.stats.statsList) {
                 System.out.printf("%s - %d / 10\n", stat.name, stat.value);
             }*/
-                System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Támadás - jelenlegi szint: %d\n[2] Védekezés - jelenlegi szint: %d\n[3] Varázserő - jelenlegi szint: %d\n[4] Tudás - jelenlegi szint: %d\n[5] Morál - jelenlegi szint: %d\n[6] Szerencse - jelenlegi szint: %d\n\n[7] Kész: ",
+                System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\nKövetkező tulajdonságpont ára: %d arany\n\n[1] Támadás - jelenlegi szint: %d\n[2] Védekezés - jelenlegi szint: %d\n[3] Varázserő - jelenlegi szint: %d\n[4] Tudás - jelenlegi szint: %d\n[5] Morál - jelenlegi szint: %d\n[6] Szerencse - jelenlegi szint: %d\n\n[7] Kész: ",
+                        player.attrPrice,
                         player.stats.attack.value,
                         player.stats.defense.value,
                         player.stats.magic.value,
