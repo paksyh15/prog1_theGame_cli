@@ -55,7 +55,7 @@ public class MenuNavigation {
         Scanner sc = new Scanner(System.in);
         int uIn = -1;
         while (uIn != 4) {
-            System.out.println("Válassz!\n\nPénzed: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Egységek vásárlása\n[2] Varázslatok vásárlása\n[3] Képességpontok vásárlása\n[4] Kész\n: ");
+            System.out.println("Válassz!\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Egységek vásárlása\n[2] Varázslatok vásárlása\n[3] Képességpontok vásárlása\n[4] Kész\n: ");
             try {
                 uIn = sc.nextInt();
             } catch (Exception e) {
@@ -78,7 +78,7 @@ public class MenuNavigation {
             for (UnitCell uc : player.ownedCells) {
                 System.out.printf("%dx %s\n", uc.amount, uc.unit.name);
             }
-            System.out.printf("Mit akarsz?\n\nPénzed: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Földműves (%d pénz)\n[2] Íjász (%d pénz)\n[3] Griff (%d pénz)\n\n[4] Vissza\n: ",
+            System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Földműves (%d pénz)\n[2] Íjász (%d pénz)\n[3] Griff (%d pénz)\n\n[4] Vissza\n: ",
                     Peasant.price,
                     Archer.price,
                     Griffin.price);
@@ -134,7 +134,7 @@ public class MenuNavigation {
             for (Magic magic : player.ownedMagic) {
                 System.out.printf("%s (%d mana)\n", magic.getName(), magic.getMana());
             }
-            System.out.printf("Mit akarsz?\n\nPénzed: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Villámcsapás (%d pénz, %d mana)\n[2] Tűzlabda (%d pénz, %d mana)\n[3] Feltámadás (%d pénz, %d mana)\n\n[4] Vissza\n: ",
+            System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Villámcsapás (%d pénz, %d mana)\n[2] Tűzlabda (%d pénz, %d mana)\n[3] Feltámadás (%d pénz, %d mana)\n\n[4] Vissza\n: ",
                     LightningBolt.price,
                     LightningBolt.mana,
                     Fireball.price,
@@ -185,7 +185,7 @@ public class MenuNavigation {
             for (PlayerStats.Stat stat : player.stats.statsList) {
                 System.out.printf("%s - %d / 10\n", stat.name, stat.value);
             }*/
-                System.out.printf("Mit akarsz?\n\nPénzed: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Támadás - jelenlegi szint: %d\n[2] Védekezés - jelenlegi szint: %d\n[3] Varázserő - jelenlegi szint: %d\n[4] Tudás - jelenlegi szint: %d\n[5] Morál - jelenlegi szint: %d\n[6] Szerencse - jelenlegi szint: %d\n\n[7] Kész: ",
+                System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Támadás - jelenlegi szint: %d\n[2] Védekezés - jelenlegi szint: %d\n[3] Varázserő - jelenlegi szint: %d\n[4] Tudás - jelenlegi szint: %d\n[5] Morál - jelenlegi szint: %d\n[6] Szerencse - jelenlegi szint: %d\n\n[7] Kész: ",
                         player.stats.attack.value,
                         player.stats.defense.value,
                         player.stats.magic.value,

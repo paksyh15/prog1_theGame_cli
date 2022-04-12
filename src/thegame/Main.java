@@ -22,7 +22,7 @@ public class Main {
             gameLogic.setDifficulty(diff);
             cont = true;
         }
-        System.out.printf("Nehézség beállítva. Kezdöpénz: %d\n\n", gameLogic.getPlayer(1).getBalance());
+        System.out.printf("Nehézség beállítva. Kezdöarany: %d\n\n", gameLogic.getPlayer(1).getBalance());
 
         // TODO: esetleg a buy meg izé methodokat a GameLogicba, de csak ha ráérek, de igazából nem fontos mert játék közbe nem lehet venni és akkor nem GameLogic kinda
         // mindenféle vásárlásolás
