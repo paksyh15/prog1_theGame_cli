@@ -1,23 +1,36 @@
 package thegame.gameElements;
 
 public class PlayerStats {
-    byte attack = 1;
-    byte defense = 1;
-    byte magic = 1;
-    byte intelligence = 1;
-    byte moral = 1;
-    byte luck = 1;
+    Stat attack = new Stat("Támadás", 1);
+    Stat defense = new Stat("Védekezés", 1);
+    Stat magic = new Stat("Varázserő", 1);
+    Stat intelligence = new Stat("Tudás", 1);
+    Stat moral = new Stat("Morál", 1);
+    Stat luck = new Stat("Szerencse", 1);
+
+    private class Stat {
+        String name = null;
+        Integer value = null;
+
+        public Stat(String name, Integer value) {
+            this.name = name;
+            this.value = value;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public Integer getValue() {
+            return value;
+        }
+
+        public void setValue(Integer value) {
+            this.value = value;
+        }
+    }
 
     public PlayerStats() {
         //ok
-    }
-
-    public PlayerStats(byte attack, byte defense, byte magic, byte intelligence, byte moral, byte luck) {
-        this.attack = attack;
-        this.defense = defense;
-        this.magic = magic;
-        this.intelligence = intelligence;
-        this.moral = moral;
-        this.luck = luck;
     }
 }
