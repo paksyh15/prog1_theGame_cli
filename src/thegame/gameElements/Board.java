@@ -1,7 +1,7 @@
 package thegame.gameElements;
 
 public class Board {
-    private final UnitCell[][] boardCells = new UnitCell[12][10];
+    public final UnitCell[][] boardCells = new UnitCell[10][12];
 
     public UnitCell getBoardPos(Position pos) {
         return boardCells[pos.getX()][pos.getY()];

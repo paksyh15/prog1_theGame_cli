@@ -27,6 +27,6 @@ public class Main {
         // TODO: esetleg a buy meg izé methodokat a GameLogicba, de csak ha ráérek, de igazából nem fontos mert játék közbe nem lehet venni és akkor nem GameLogic kinda
         // mindenféle vásárlásolás
         meNav.askChooseBuy();
-
+        meNav.printBoard(gameLogic.board);
     }
 }

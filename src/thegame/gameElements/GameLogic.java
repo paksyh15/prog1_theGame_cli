@@ -8,7 +8,7 @@ public class GameLogic {
 
     private Player player1 = new Player();
     private Player player2 = new Player(1000);
-    private Board board = new Board();
+    public Board board = new Board();
 
     public GameLogic() {
 
