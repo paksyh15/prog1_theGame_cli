@@ -2,6 +2,8 @@ package thegame.gameElements;
 
 //import javafx.scene.image.Image;
 
+import java.util.Random;
+
 public abstract class Unit {
     int price;
     int damageMin;
@@ -33,6 +35,10 @@ public abstract class Unit {
 
     public int getDamageMax() {
         return this.damageMax;
+    }
+
+    public int getDamageRnd(Random rnd) {
+        return rnd.nextInt(this.getDamageMin(), this.getDamageMax() + 1);
     }
 
     public int getHealth() {

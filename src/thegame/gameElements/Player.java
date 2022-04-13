@@ -1,5 +1,7 @@
 package thegame.gameElements;
 
+import thegame.Main;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,5 +34,19 @@ public class Player {
         } else {
             return false;
         }
+    }
+
+    public ArrayList<UnitCell> getAllPlacedCells() {
+        ArrayList<UnitCell> list = new ArrayList<>();
+        Board board = Main.gameLogic.board;
+        for(int i = 0; i < board.boardCells[0].length; i++) {
+            for(int j = 0; j < board.boardCells.length; j++) {
+                if(board.boardCells[j][i] == null) continue;
+                if(board.boardCells[j][i].owner == this) {
+                    list.add(board.boardCells[j][i]);
+                }
+            }
+        }
+        return list;
     }
 }

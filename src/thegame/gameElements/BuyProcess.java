@@ -111,6 +111,7 @@ public class BuyProcess {
         Integer purchasePrice = unitCell.amount * unitCell.unit.getPrice();
         if (player.getBalance() >= purchasePrice) {
             player.setBalance(player.getBalance() - purchasePrice);
+            unitCell.owner = player;
             player.ownedCells.add(unitCell);
             return true;
         }
@@ -211,6 +212,7 @@ public class BuyProcess {
             } else {
                 System.out.printf("Hiba! Erre nem telik, vagy a(z) %s tulajdonságod már 10-es szintü!\n",
                         chosenStat.name);
+                TuiHandler.pressEnterKey();
             }
         }
     }

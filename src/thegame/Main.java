@@ -3,11 +3,14 @@ package thegame;
 import thegame.gameElements.GameLogic;
 import thegame.gameElements.BuyProcess;
 import thegame.gameElements.TuiHandler;
+import thegame.gameElements.UnitCellsPlacementProcess;
 
 public class Main {
 
     public static GameLogic gameLogic = new GameLogic();
     public static BuyProcess buyProcess = new BuyProcess();
+
+    public static UnitCellsPlacementProcess ucpp;
 
     public static void main(String[] args) {
 
@@ -24,10 +27,11 @@ public class Main {
             cont = true;
         }
         System.out.printf("Nehézség beállitva. Kezdöarany: %d\n\n", gameLogic.getPlayer(1).getBalance());
-
-        // TODO: esetleg a buy meg izé methodokat a GameLogicba, de csak ha ráérek, de igazából nem fontos mert játék közbe nem lehet venni és akkor nem GameLogic kinda
         // mindenféle vásárlásolás
         buyProcess.askChooseBuy();  // nem töröljük mer bot még használhatja
-        TuiHandler.printBoard(gameLogic.board);
+
+        ucpp = new UnitCellsPlacementProcess(Main.gameLogic.getPlayer(1));
+
+        ucpp.askPlaceAllUnits(Main.gameLogic.getPlayer(1));
     }
 }
