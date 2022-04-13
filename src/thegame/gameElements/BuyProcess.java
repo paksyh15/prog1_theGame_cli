@@ -35,6 +35,7 @@ public class BuyProcess {
 
         int uIn = -1;
         while (uIn != 4) {
+            Player player = Main.gameLogic.getPlayer(1);
             System.out.println("Válassz!\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Egységek vásárlása\n[2] Varázslatok vásárlása\n[3] Képességpontok vásárlása\n[4] Kész\n: ");
             Scanner sc = new Scanner(System.in);
             try {
@@ -47,6 +48,14 @@ public class BuyProcess {
                 case 1 -> this.askBuyUnitsProcess();
                 case 2 -> this.askBuyMagicProcess();
                 case 3 -> this.askBuyAttrsProcess();
+                case 4 -> {
+                    if(player.ownedCells.isEmpty()) {
+                        System.out.println("Hiba! Egység(ek) nélkül nem kezdhetsz játékot!");
+                        TuiHandler.pressEnterKey();
+                        uIn = -1;
+                        continue;
+                    }
+                }
             }
         }
     }

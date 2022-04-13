@@ -8,7 +8,6 @@ public class Main {
 
     public static GameLogic gameLogic = new GameLogic();
     public static BuyProcess buyProcess = new BuyProcess();
-    //public static TuiHandler tui = new TuiHandler();
 
     public static void main(String[] args) {
 
