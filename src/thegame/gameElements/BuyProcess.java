@@ -6,13 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BuyProcess {
-    public void pressEnterKey() {
-        try {
-            System.out.println("Folytatáshoz nyomj ENTER-t...");
-            System.in.read();
-        } catch (Exception e) {
-        }
-    }
+
 
     public int askDifficulty() {  // 0 / 1 / 2 / -1 err
         System.out.print("Nehézség\n\t[0] (könnyü)\n\t[1] (közepes)\n\t[2] Nehéz\n: ");
@@ -27,21 +21,7 @@ public class BuyProcess {
         return inDiff;
     }
 
-    public void clearSceen() {
-        ProcessBuilder pb;
-        String osname = System.getProperty("os.name");
-        try {
-            if (osname.toLowerCase().contains("windows"))
-                pb = new ProcessBuilder("cmd", "/c", "cls");
-            else
-                pb = new ProcessBuilder("clear");
-            pb.inheritIO().start().waitFor();
-            Thread.sleep(16L);
-            System.out.flush();
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }
+
 
     @Deprecated
     public void printPlayerStats(Player player, boolean isMenu) {
@@ -111,7 +91,7 @@ public class BuyProcess {
             System.out.println("Siker!");
         } else {
             System.out.println("Hiba! Erre nem telik!");
-            pressEnterKey();
+            TuiHandler.pressEnterKey();
         }
         //pressEnterKey();
     }
@@ -158,7 +138,7 @@ public class BuyProcess {
             System.out.println("Siker!");
         } else {
             System.out.println("Hiba! Erre nem telik, vagy már megvetted!");
-            pressEnterKey();
+            TuiHandler.pressEnterKey();
         }
     }
 

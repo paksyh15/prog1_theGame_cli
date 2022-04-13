@@ -1,7 +1,31 @@
 package thegame.gameElements;
 
 public class TuiHandler {
-    public void printBoard(Board board) {
+    public static void pressEnterKey() {
+        try {
+            System.out.println("Folytatáshoz nyomj ENTER-t...");
+            System.in.read();
+        } catch (Exception e) {
+        }
+    }
+
+    public static void clearSceen() {
+        ProcessBuilder pb;
+        String osname = System.getProperty("os.name");
+        try {
+            if (osname.toLowerCase().contains("windows"))
+                pb = new ProcessBuilder("cmd", "/c", "cls");
+            else
+                pb = new ProcessBuilder("clear");
+            pb.inheritIO().start().waitFor();
+            Thread.sleep(16L);
+            System.out.flush();
+        } catch (Exception e) {
+            System.err.println(e.toString());
+        }
+    }
+
+    public static void printBoard(Board board) {
         System.out.print("\s\s\s\s");
         for (int i = 1; i <= board.boardCells.length; i++) {
             if (i <= 9)

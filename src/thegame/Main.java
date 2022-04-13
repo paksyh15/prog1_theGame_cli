@@ -8,11 +8,11 @@ public class Main {
 
     public static GameLogic gameLogic = new GameLogic();
     public static BuyProcess buyProcess = new BuyProcess();
-    public static TuiHandler tui = new TuiHandler();
+    //public static TuiHandler tui = new TuiHandler();
 
     public static void main(String[] args) {
 
-        buyProcess.clearSceen();
+        TuiHandler.clearSceen();
         // heló, nehézségválasztás
         boolean cont = false;
         while (!cont) {
@@ -29,6 +29,6 @@ public class Main {
         // TODO: esetleg a buy meg izé methodokat a GameLogicba, de csak ha ráérek, de igazából nem fontos mert játék közbe nem lehet venni és akkor nem GameLogic kinda
         // mindenféle vásárlásolás
         buyProcess.askChooseBuy();  // nem töröljük mer bot még használhatja
-        tui.printBoard(gameLogic.board);
+        TuiHandler.printBoard(gameLogic.board);
     }
 }
