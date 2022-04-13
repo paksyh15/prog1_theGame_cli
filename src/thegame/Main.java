@@ -2,11 +2,13 @@ package thegame;
 
 import thegame.gameElements.GameLogic;
 import thegame.gameElements.BuyProcess;
+import thegame.gameElements.TuiHandler;
 
 public class Main {
 
     public static GameLogic gameLogic = new GameLogic();
     public static BuyProcess buyProcess = new BuyProcess();
+    public static TuiHandler tui = new TuiHandler();
 
     public static void main(String[] args) {
 
@@ -26,7 +28,7 @@ public class Main {
 
         // TODO: esetleg a buy meg izé methodokat a GameLogicba, de csak ha ráérek, de igazából nem fontos mert játék közbe nem lehet venni és akkor nem GameLogic kinda
         // mindenféle vásárlásolás
-        buyProcess.askChooseBuy();
-        buyProcess.printBoard(gameLogic.board);
+        buyProcess.askChooseBuy();  // nem töröljük mer bot még használhatja
+        tui.printBoard(gameLogic.board);
     }
 }
