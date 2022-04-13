@@ -7,8 +7,8 @@ public class Archer extends Unit {
     static int health = 7;
     static int speed = 4;
     static int initiative = 9;
-    static String letter = "Í";
-    static String name = "Íjász";
+    static String letter = "I";
+    static String name = "Ijász";
 
     public Archer() {
         super(price, damageMin, damageMax, health, speed, initiative, letter, name);

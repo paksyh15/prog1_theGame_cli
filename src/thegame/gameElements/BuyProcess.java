@@ -32,10 +32,10 @@ public class BuyProcess {
     }
 
     public void askChooseBuy() {
-
         int uIn = -1;
+        Player player = Main.gameLogic.getPlayer(1);
         while (uIn != 4) {
-            Player player = Main.gameLogic.getPlayer(1);
+            TuiHandler.clearSceen();
             System.out.println("Válassz!\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Egységek vásárlása\n[2] Varázslatok vásárlása\n[3] Képességpontok vásárlása\n[4] Kész\n: ");
             Scanner sc = new Scanner(System.in);
             try {
@@ -65,11 +65,12 @@ public class BuyProcess {
         int uIn = -1;
         boolean isUserDone = false;
         while (uIn == -1) {
+            TuiHandler.clearSceen();
             System.out.println("Meglévö egységek:");
             for (UnitCell uc : player.ownedCells) {
                 System.out.printf("%dx %s\n", uc.amount, uc.unit.name);
             }
-            System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Földműves (%d pénz)\n[2] Íjász (%d pénz)\n[3] Griff (%d pénz)\n\n[4] Vissza\n: ",
+            System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Földmüves (%d pénz)\n[2] Ijász (%d pénz)\n[3] Griff (%d pénz)\n\n[4] Vissza\n: ",
                     Peasant.price,
                     Archer.price,
                     Griffin.price);
@@ -86,7 +87,8 @@ public class BuyProcess {
         Unit unitToBuy = (new Unit[]{new Peasant(), new Archer(), new Griffin()})[uIn - 1];
         uIn = -1;
         while (uIn == -1) {
-            System.out.println("Mennyit akarsz? (nyílván 0-nál többet)\n: ");
+            TuiHandler.clearSceen();
+            System.out.printf("Mennyit akarsz ebből: %s? (nyilván 0-nál többet)\n: ", unitToBuy.name);
             Scanner sc = new Scanner(System.in);
             try {
                 uIn = sc.nextInt();
@@ -121,11 +123,12 @@ public class BuyProcess {
         int uIn = -1;
         boolean isUserDone = false;
         while (uIn == -1) {
+            TuiHandler.clearSceen();
             System.out.println("Meglévö varázslatok:");
             for (Magic magic : player.ownedMagic) {
                 System.out.printf("%s (%d mana)\n", magic.getName(), magic.getMana());
             }
-            System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Villámcsapás (%d pénz, %d mana)\n[2] Tűzlabda (%d pénz, %d mana)\n[3] Feltámadás (%d pénz, %d mana)\n\n[4] Vissza\n: ",
+            System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Villámcsapás (%d pénz, %d mana)\n[2] Tüzlabda (%d pénz, %d mana)\n[3] Feltámadás (%d pénz, %d mana)\n\n[4] Vissza\n: ",
                     LightningBolt.price,
                     LightningBolt.mana,
                     Fireball.price,
@@ -170,6 +173,7 @@ public class BuyProcess {
         int uIn;
         boolean isUserDone = false;
         while (!isUserDone) {
+            TuiHandler.clearSceen();
             uIn = -1;
             while (uIn == -1) {
             /*System.out.println("Jelenlegi tulajdonságpontjaid:");
@@ -205,7 +209,7 @@ public class BuyProcess {
             if (this.buyAttr(player, chosenStat)) {
                 System.out.println("Siker!");
             } else {
-                System.out.printf("Hiba! Erre nem telik, vagy a(z) %s tulajdonságod már 10-es szintű!\n",
+                System.out.printf("Hiba! Erre nem telik, vagy a(z) %s tulajdonságod már 10-es szintü!\n",
                         chosenStat.name);
             }
         }
