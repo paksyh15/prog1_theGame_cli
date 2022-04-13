@@ -1,5 +1,7 @@
 package thegame.gameElements;
 
+import org.w3c.dom.Text;
+
 public class TuiHandler {
     public static void pressEnterKey() {
         try {
@@ -25,6 +27,15 @@ public class TuiHandler {
         }
     }
 
+    private static void printBoardLine() {
+        System.out.print(TextColors.BLUE);
+        for(int j=0; j < 13; j++) {
+            System.out.print("+");
+            if(j<12) System.out.print("- -");
+        }
+        System.out.print(TextColors.RESET);
+    }
+
     public static void printBoard(Board board) {
         System.out.print("\s\s\s\s");
         for (int i = 1; i <= board.boardCells.length; i++) {
@@ -33,18 +44,23 @@ public class TuiHandler {
             else
                 System.out.print("\s" + i + "\s");
         }
+        System.out.print("\n   ");
+        printBoardLine();
         System.out.print("\n");
         for (int i = 0; i < board.boardCells[0].length; i++) {
-            if (i + 1 <= 9) System.out.print(i + 1 + "\s\s|\s");
-            else System.out.print(i + 1 + "\s|\s");
+            if (i + 1 <= 9) System.out.print(i + 1 + TextColors.BLUE + "\s\s|\s" + TextColors.RESET);
+            else System.out.print(i + 1 + TextColors.BLUE + "\s|\s" + TextColors.RESET);
             for(int j = 0; j < board.boardCells.length; j++) {
                 UnitCell uc = board.boardCells[j][i];
                 if(uc == null) {
-                    System.out.print("\s\s|\s");
+                    System.out.print(TextColors.BLUE + "\s\s|\s" + TextColors.RESET);
                 } else {
-                    System.out.print(uc.unit.letter + "\s|\s");
+                    System.out.print(uc.unit.letter + TextColors.BLUE + "\s|\s" + TextColors.RESET);
                 }
+                System.out.print(TextColors.RESET);
             }
+            System.out.print("\n   ");
+            printBoardLine();
             System.out.print("\n");
         }
     }
