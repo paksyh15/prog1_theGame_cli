@@ -1,7 +1,7 @@
 package thegame.gameElements;
 
 public class Board {
-    public final UnitCell[][] boardCells = new UnitCell[10][12];  // asszem [y][x]
+    public final UnitCell[][] boardCells = new UnitCell[12][10]; // x,y (oszlopszám/sorszám)
 
     public UnitCell getBoardPos(Position pos) {
         return boardCells[pos.getX()][pos.getY()];
