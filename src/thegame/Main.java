@@ -1,20 +1,20 @@
 package thegame;
 
 import thegame.gameElements.GameLogic;
-import thegame.gameElements.MenuNavigation;
+import thegame.gameElements.BuyProcess;
 
 public class Main {
 
     public static GameLogic gameLogic = new GameLogic();
-    public static MenuNavigation meNav = new MenuNavigation();
+    public static BuyProcess buyProcess = new BuyProcess();
 
     public static void main(String[] args) {
 
-        meNav.clearSceen();
+        buyProcess.clearSceen();
         // heló, nehézségválasztás
         boolean cont = false;
         while (!cont) {
-            int diff = meNav.askDifficulty();
+            int diff = buyProcess.askDifficulty();
             if(diff == -1) {
                 System.out.println("Érvénytelen nehézség!");
                 continue;
@@ -26,7 +26,7 @@ public class Main {
 
         // TODO: esetleg a buy meg izé methodokat a GameLogicba, de csak ha ráérek, de igazából nem fontos mert játék közbe nem lehet venni és akkor nem GameLogic kinda
         // mindenféle vásárlásolás
-        meNav.askChooseBuy();
-        meNav.printBoard(gameLogic.board);
+        buyProcess.askChooseBuy();
+        buyProcess.printBoard(gameLogic.board);
     }
 }

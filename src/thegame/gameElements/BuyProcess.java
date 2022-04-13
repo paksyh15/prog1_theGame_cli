@@ -5,7 +5,7 @@ import thegame.Main;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class MenuNavigation {
+public class BuyProcess {
     public void pressEnterKey() {
         try {
             System.out.println("Folytatáshoz nyomj ENTER-t...");
@@ -247,7 +247,7 @@ public class MenuNavigation {
             else
                 System.out.print("\s" + i + "\s");
         }
-        System.out.println();
+        System.out.print("\n");
         int i = 1;
         for (UnitCell[] row : board.boardCells) {
             if(i <= 9)
@@ -262,7 +262,7 @@ public class MenuNavigation {
                 }
 
             }
-            System.out.println();
+            System.out.print("\n");
             i++;
         }
     }
