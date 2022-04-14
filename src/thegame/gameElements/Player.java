@@ -14,6 +14,7 @@ public class Player {
     public List<UnitCell> ownedCells = new ArrayList<UnitCell>();
     public List<Magic> ownedMagic = new ArrayList<Magic>();
     public Integer attrPrice = 5;
+    private Integer mana = null;
 
     public Player(Integer money) {
         if (money >= 0)
@@ -50,5 +51,13 @@ public class Player {
             }
         }
         return list;
+    }
+
+    public Integer getMana() {
+        return mana;
+    }
+
+    public void setMana(Integer mana) {
+        this.mana = Math.max(mana, 0);
     }
 }

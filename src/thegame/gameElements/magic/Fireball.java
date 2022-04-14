@@ -15,12 +15,17 @@ public class Fireball extends Magic {
     }
 
     @Override
-    public void execute(Player player, Position pos) throws ExceptionUnsupported {
-
+    public boolean execute(Player player, Position pos) throws ExceptionUnsupported {
+        throw new ExceptionUnsupported();
     }
 
     @Override
-    public void execute(Player player, UnitCell uc_which, Position toWhere) {
+    public boolean execute(Player player, UnitCell uc) throws ExceptionUnsupported {
+        throw new ExceptionUnsupported();
+    }
 
+    @Override
+    public boolean execute(Player player, UnitCell uc_which, Position toWhere) throws ExceptionUnsupported {
+        throw new ExceptionUnsupported();
     }
 }

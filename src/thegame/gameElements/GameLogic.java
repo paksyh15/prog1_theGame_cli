@@ -3,6 +3,7 @@ package thegame.gameElements;
 //import thegame.MainWindow;
 
 import thegame.Main;
+import thegame.gameElements.unit.UnitCell;
 
 public class GameLogic {
 
@@ -41,6 +42,17 @@ public class GameLogic {
                 return player2;
             default:
                 return null;
+        }
+    }
+
+    public void setUnitToNull(UnitCell uc) {
+        for(int i = 0; i < this.board.boardCells[0].length; i++) {
+            for(int j = 0; j < this.board.boardCells.length; j++) {
+                if(this.board.boardCells[j][i] == uc) {
+                    this.board.boardCells[j][i] = null;
+                    return;
+                }
+            }
         }
     }
 

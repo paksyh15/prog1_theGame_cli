@@ -28,6 +28,7 @@ public abstract class Magic {
         return this.mana;
     }
 
-    public abstract void execute(Player player, Position pos) throws ExceptionUnsupported;
-    public abstract void execute(Player player, UnitCell uc, Position pos) throws ExceptionUnsupported;
+    public abstract boolean execute(Player player, Position pos) throws ExceptionUnsupported;
+    public abstract boolean execute(Player player, UnitCell uc, Position pos) throws ExceptionUnsupported;
+    public abstract boolean execute(Player player, UnitCell uc) throws ExceptionUnsupported;
 }

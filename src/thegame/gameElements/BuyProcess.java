@@ -1,10 +1,7 @@
 package thegame.gameElements;
 
 import thegame.Main;
-import thegame.gameElements.magic.Fireball;
-import thegame.gameElements.magic.LightningBolt;
-import thegame.gameElements.magic.Magic;
-import thegame.gameElements.magic.Revive;
+import thegame.gameElements.magic.*;
 import thegame.gameElements.unit.*;
 
 import java.util.InputMismatchException;
@@ -134,24 +131,28 @@ public class BuyProcess {
             for (Magic magic : player.ownedMagic) {
                 System.out.printf("%s (%d mana)\n", magic.getName(), magic.getMana());
             }
-            System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Villámcsapás (%d pénz, %d mana)\n[2] Tüzlabda (%d pénz, %d mana)\n[3] Feltámadás (%d pénz, %d mana)\n\n[4] Vissza\n: ",
+            System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Villámcsapás (%d pénz, %d mana)\n[2] Tüzlabda (%d pénz, %d mana)\n[3] Feltámadás (%d pénz, %d mana)\n[4] Egységtörlés (%d pénz, %d mana)\n[5] Saját egység teleportálása (%d pénz, %d mana)\n\n[6] Vissza\n: ",
                     LightningBolt.price,
                     LightningBolt.mana,
                     Fireball.price,
                     Fireball.mana,
                     Revive.price,
-                    Revive.mana);
+                    Revive.mana,
+                    DeleteUnit.price,
+                    DeleteUnit.mana,
+                    TeleportUnit.price,
+                    TeleportUnit.mana);
             Scanner sc = new Scanner(System.in);
             try {
                 uIn = sc.nextInt();
             } catch (Exception e) {
                 uIn = -1;
             }
-            if (!(uIn <= 4 && uIn >= 1)) uIn = -1;
-            if (uIn == 4) isUserDone = true;
+            if (!(uIn <= 6 && uIn >= 1)) uIn = -1;
+            if (uIn == 6) isUserDone = true;
         }
         if (isUserDone) return;
-        Magic magicToBuy = (new Magic[]{new LightningBolt(), new Fireball(), new Revive()})[uIn - 1];
+        Magic magicToBuy = (new Magic[]{new LightningBolt(), new Fireball(), new Revive(), new DeleteUnit(), new TeleportUnit()})[uIn - 1];
         if (this.buyMagic(player, magicToBuy)) {
             System.out.println("Siker!");
         } else {

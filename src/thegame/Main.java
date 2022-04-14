@@ -1,9 +1,8 @@
 package thegame;
 
-import thegame.gameElements.GameLogic;
-import thegame.gameElements.BuyProcess;
-import thegame.gameElements.TuiHandler;
-import thegame.gameElements.UnitCellsPlacementProcess;
+import thegame.gameElements.*;
+
+import java.util.Random;
 
 public class Main {
 
@@ -32,6 +31,9 @@ public class Main {
         ucpp = new UnitCellsPlacementProcess(Main.gameLogic.getPlayer(1));
         ucpp.askPlaceAllUnits(Main.gameLogic.getPlayer(1));
         System.out.println("Elhelyezted az összes egységed!");
+        // bot vásárlás
+        new BuyProcessBot(new Random());
+        // bot vásárlás ok
         TuiHandler.pressEnterKey();
     }
 }
