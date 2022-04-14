@@ -8,7 +8,7 @@ public class PlayerStats {
 
     Stat attack = new Stat("Támadás", 1);
     Stat defense = new Stat("Védekezés", 1);
-    Stat magic = new Stat("Varázserő", 1);
+    Stat magic = new Stat("Varázserö", 1);
     Stat intelligence = new Stat("Tudás", 1);
     Stat moral = new Stat("Morál", 1);
     Stat luck = new Stat("Szerencse", 1);

@@ -1,9 +1,9 @@
-package thegame.gameElements;
+package thegame.gameElements.magic;
 
 public class Magic {
-    String name = null;
-    Integer price = null;
-    Integer mana = null;
+    public String name = null;
+    public Integer price = null;
+    public Integer mana = null;
 
     public Magic(String name, Integer price, Integer mana) {
         this.name = name;

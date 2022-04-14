@@ -9,8 +9,8 @@ public class Main {
 
     public static GameLogic gameLogic = new GameLogic();
     public static BuyProcess buyProcess = new BuyProcess();
-
     public static UnitCellsPlacementProcess ucpp;
+    // TuiHandler létezik
 
     public static void main(String[] args) {
 
@@ -29,9 +29,9 @@ public class Main {
         System.out.printf("Nehézség beállitva. Kezdöarany: %d\n\n", gameLogic.getPlayer(1).getBalance());
         // mindenféle vásárlásolás
         buyProcess.askChooseBuy();  // nem töröljük mer bot még használhatja
-
         ucpp = new UnitCellsPlacementProcess(Main.gameLogic.getPlayer(1));
-
         ucpp.askPlaceAllUnits(Main.gameLogic.getPlayer(1));
+        System.out.println("Elhelyezted az összes egységed!");
+        TuiHandler.pressEnterKey();
     }
 }

@@ -1,6 +1,7 @@
 package thegame.gameElements;
 
 import thegame.Main;
+import thegame.gameElements.magic.Magic;
 
 import java.util.ArrayList;
 import java.util.List;
