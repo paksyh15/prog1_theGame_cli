@@ -100,7 +100,7 @@ public class BuyProcess {
         }
         int amountToBuy = uIn;
         UnitCell unitCell = new UnitCell(unitToBuy, amountToBuy);
-        if (this.buyUnits(player, unitCell)) {
+        if (this.buyUnit(player, unitCell)) {
             System.out.println("Siker!");
         } else {
             System.out.println("Hiba! Erre nem telik!");
@@ -109,7 +109,7 @@ public class BuyProcess {
         //pressEnterKey();
     }
 
-    public boolean buyUnits(Player player, UnitCell unitCell) {
+    public boolean buyUnit(Player player, UnitCell unitCell) {
         Integer purchasePrice = unitCell.amount * unitCell.unit.getPrice();
         if (player.getBalance() >= purchasePrice) {
             player.setBalance(player.getBalance() - purchasePrice);
