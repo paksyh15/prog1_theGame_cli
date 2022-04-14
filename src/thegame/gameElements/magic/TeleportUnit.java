@@ -5,22 +5,22 @@ import thegame.gameElements.Player;
 import thegame.gameElements.Position;
 import thegame.gameElements.unit.UnitCell;
 
-public class LightningBolt extends Magic{
-    public static String name = "Villámcsapás";
-    public static Integer price = 60;
-    public static Integer mana = 5;
+public class TeleportUnit extends Magic {
+    public static String name = "Egység teleportálása";
+    public static Integer price = 130;
+    public static Integer mana = 30;
 
-    public LightningBolt() {
+    public TeleportUnit() {
         super(name, price, mana);
     }
 
     @Override
     public void execute(Player player, Position pos) throws ExceptionUnsupported {
-
+        throw new ExceptionUnsupported();
     }
 
     @Override
-    public void execute(Player player, UnitCell uc_which, Position toWhere) {
+    public void execute(Player player, UnitCell uc, Position pos) {
 
     }
 }

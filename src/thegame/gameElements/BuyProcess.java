@@ -5,6 +5,7 @@ import thegame.gameElements.magic.Fireball;
 import thegame.gameElements.magic.LightningBolt;
 import thegame.gameElements.magic.Magic;
 import thegame.gameElements.magic.Revive;
+import thegame.gameElements.unit.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

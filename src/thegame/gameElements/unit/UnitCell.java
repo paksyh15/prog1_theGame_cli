@@ -1,12 +1,15 @@
-package thegame.gameElements;
+package thegame.gameElements.unit;
 
 import thegame.errors.ExceptionNotOnBoard;
+import thegame.gameElements.Board;
+import thegame.gameElements.Player;
+import thegame.gameElements.Position;
 
 public class UnitCell {
-    Unit unit;  //archer, griffin stb.. osztályokból példa objektum
-    Integer amount;  // egységek száma ezen a kockán
-    Integer edgeHP;  // csak egy egység életét követjük, mert egyesével halnak meg
-    Player owner;
+    public Unit unit;  //archer, griffin stb.. osztályokból példa objektum
+    public Integer amount;  // egységek száma ezen a kockán
+    public Integer edgeHP;  // csak egy egység életét követjük, mert egyesével halnak meg
+    public Player owner;
 
     public UnitCell(Unit unit, Integer amount) {
         this.unit = unit;

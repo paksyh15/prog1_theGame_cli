@@ -2,6 +2,7 @@ package thegame.gameElements;
 
 import thegame.Main;
 import thegame.gameElements.magic.Magic;
+import thegame.gameElements.unit.UnitCell;
 
 import java.util.ArrayList;
 import java.util.List;

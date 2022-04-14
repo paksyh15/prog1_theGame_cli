@@ -1,6 +1,11 @@
 package thegame.gameElements.magic;
 
-public class Magic {
+import thegame.errors.ExceptionUnsupported;
+import thegame.gameElements.Player;
+import thegame.gameElements.Position;
+import thegame.gameElements.unit.UnitCell;
+
+public abstract class Magic {
     public String name = null;
     public Integer price = null;
     public Integer mana = null;
@@ -22,4 +27,7 @@ public class Magic {
     public int getMana() {
         return this.mana;
     }
+
+    public abstract void execute(Player player, Position pos) throws ExceptionUnsupported;
+    public abstract void execute(Player player, UnitCell uc, Position pos) throws ExceptionUnsupported;
 }

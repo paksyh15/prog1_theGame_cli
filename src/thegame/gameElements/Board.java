@@ -1,5 +1,7 @@
 package thegame.gameElements;
 
+import thegame.gameElements.unit.UnitCell;
+
 public class Board {
     public final UnitCell[][] boardCells = new UnitCell[12][10]; // x,y (oszlopszám/sorszám)
 

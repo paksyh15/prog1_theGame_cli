@@ -1,18 +1,18 @@
-package thegame.gameElements;
+package thegame.gameElements.unit;
 
 //import javafx.scene.image.Image;
 
 import java.util.Random;
 
 public abstract class Unit {
-    int price;
-    int damageMin;
-    int damageMax;
-    int health;
-    int speed;
-    int initiative;
-    String letter = null;
-    String name = null;
+    public int price;
+    public int damageMin;
+    public int damageMax;
+    public int health;
+    public int speed;
+    public int initiative;
+    public String letter = null;
+    public String name = null;
 
     public Unit(int price, int damageMin, int damageMax, int health, int speed, int initiative, String letter, String name) {
         this.price = price;

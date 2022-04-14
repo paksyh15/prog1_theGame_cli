@@ -1,8 +1,8 @@
 package thegame.gameElements;
 
 import thegame.Main;
+import thegame.gameElements.unit.UnitCell;
 
-import java.awt.image.TileObserver;
 import java.util.ArrayList;
 import java.util.Scanner;
 
