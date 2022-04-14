@@ -8,7 +8,7 @@ import thegame.gameElements.unit.UnitCell;
 
 public class DeleteUnit extends Magic{
     public static String name = "Egység törlése";
-    public static Integer price = 200;
+    public static Integer price = 170;
     public static Integer mana = 52;
 
     public DeleteUnit() {
@@ -21,7 +21,7 @@ public class DeleteUnit extends Magic{
     }
 
     @Override
-    public boolean execute(Player player, UnitCell uc) throws ExceptionUnsupported {
+    public boolean execute(Player player, UnitCell uc) {
         if(player.getMana() < this.getMana()) {
             return false;
         }

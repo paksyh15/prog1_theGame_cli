@@ -1,6 +1,7 @@
 package thegame;
 
 import thegame.gameElements.*;
+import thegame.gameElements.unit.*;
 
 import java.util.Random;
 
@@ -12,6 +13,12 @@ public class Main {
     // TuiHandler létezik
 
     public static void main(String[] args) {
+
+        Unit.inOrderUnits.add(new Peasant());
+        Unit.inOrderUnits.add(new Archer());
+        Unit.inOrderUnits.add(new Griffin());
+        Unit.inOrderUnits.add(new Assassin());
+        Unit.inOrderUnits.add(new Tank());
 
         TuiHandler.clearSceen();
         // heló, nehézségválasztás
@@ -32,7 +39,8 @@ public class Main {
         ucpp.askPlaceAllUnits(Main.gameLogic.getPlayer(1));
         System.out.println("Elhelyezted az összes egységed!");
         // bot vásárlás
-        new BuyProcessBot(new Random());
+        BuyProcessBot bpb = new BuyProcessBot(new Random());
+        bpb.doStuff();
         // bot vásárlás ok
         TuiHandler.pressEnterKey();
     }

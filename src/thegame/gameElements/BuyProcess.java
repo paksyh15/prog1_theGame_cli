@@ -109,7 +109,7 @@ public class BuyProcess {
         //pressEnterKey();
     }
 
-    private boolean buyUnits(Player player, UnitCell unitCell) {
+    public boolean buyUnits(Player player, UnitCell unitCell) {
         Integer purchasePrice = unitCell.amount * unitCell.unit.getPrice();
         if (player.getBalance() >= purchasePrice) {
             player.setBalance(player.getBalance() - purchasePrice);
@@ -161,7 +161,7 @@ public class BuyProcess {
         }
     }
 
-    private boolean buyMagic(Player player, Magic magic) {
+    public boolean buyMagic(Player player, Magic magic) {
         for (Magic m : player.ownedMagic) {
             if (m.getName().equals(magic.getName()))
                 return false;
@@ -223,7 +223,7 @@ public class BuyProcess {
         }
     }
 
-    private boolean buyAttr(Player player, PlayerStats.Stat stat) {
+    public boolean buyAttr(Player player, PlayerStats.Stat stat) {
         PlayerStats.Stat playerStat = null;
         for (PlayerStats.Stat stat2 : player.stats.statsList) {
             if (stat2.name.equals(stat.name)) {

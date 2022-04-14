@@ -31,7 +31,7 @@ public class Player {
     }
 
     public boolean setBalance(Integer money) {
-        if (money > 0) {
+        if (money >= 0) {
             this.money = money;
             return true;
         } else {
