@@ -6,7 +6,7 @@ import thegame.Main;
 import thegame.gameElements.unit.UnitCell;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Iterator;
 
 public class GameLogic {
 
@@ -73,6 +73,13 @@ public class GameLogic {
                 }
             }
         }
+        Iterator it = oList.iterator();
+        while(it.hasNext()) {
+            UnitCell unitCell = (UnitCell) it.next();
+            if(unitCell.unit.lastActionRound == numRound) {
+                it.remove();
+            }
+        }
         return oList;
     }
 
@@ -81,29 +88,43 @@ public class GameLogic {
         boolean isOver = false, isRoundOver = false;
         while (!isOver) {
             // round start
-            numRound += 1;
+            this.numRound += 1;
+            isRoundOver = false;
             while (!isRoundOver) {
                 TuiHandler.printRoundLine();
                 TuiHandler.printBoard(Main.gameLogic.board);
                 ArrayList<UnitCell> orderedUnits = getMoveOrderedUCs();
+                if(orderedUnits.stream().count() == 0) {
+                    isRoundOver = true;
+                    break;
+                }
                 System.out.print("Az egységek következési sorrendben: ");
                 TuiHandler.printOrderedUnits(orderedUnits);
                 Player curPlayer = orderedUnits.get(0).owner;
                 if(curPlayer == getPlayer(1)) {
                     // enber gyün
                     switch (TuiHandler.askWhatDo(orderedUnits.get(0))) {
-                        case 0:
+                        case 0: // aktív egységgel valamit
                             // egységgel csinálás
                             UnitCell uc = orderedUnits.get(0);
                             switch(TuiHandler.askWhatDoUnitCell(uc)) {
-                                case 0:
+                                case 0: // támad
+                                    Position pos = TuiHandler.askPosition();
+                                    if(uc.attackAt(pos)) {
+                                        uc.unit.lastActionRound = numRound;
+                                    } else {
+                                        System.out.println("Sikertelen támadás!");
+                                        TuiHandler.pressEnterKey();
+                                    }
+                                    break;
+                                case 1: // egység spec képesség
 
                                     break;
-                                case 1:
+                                case 2: // garázsolás
 
                                     break;
-                                case 2:
-
+                                case 3: // egység afk
+                                    uc.unit.lastActionRound = numRound;
                                     break;
                             }
                             break;
@@ -115,6 +136,8 @@ public class GameLogic {
                 } else {
                     // bot gyün
                     // TODO: az egész bot kb
+                    UnitCell uc = orderedUnits.get(0);
+                    uc.unit.lastActionRound = numRound;
                 }
             }
         }

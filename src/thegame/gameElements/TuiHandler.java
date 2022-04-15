@@ -125,23 +125,23 @@ public class TuiHandler {
         try {
             System.out.printf("[0] Cselekvés ezzel: %s\n[1] Varázslás\n: ",
                     String.format("%dx %s (utolsó hp: %d) [%d,%d]; ",
-                    nextUnit.amount,
-                    nextUnit.unit.name,
-                    nextUnit.edgeHP,
-                    nextUnit.getPosOnBoard(Main.gameLogic.board).getX(),
-                    nextUnit.getPosOnBoard(Main.gameLogic.board).getY()));
+                            nextUnit.amount,
+                            nextUnit.unit.name,
+                            nextUnit.edgeHP,
+                            nextUnit.getPosOnBoard(Main.gameLogic.board).getX(),
+                            nextUnit.getPosOnBoard(Main.gameLogic.board).getY()));
         } catch (ExceptionNotOnBoard e) {
             throw new RuntimeException(e); // elvileg soha
         }
         int uIn = -1;
-        while(uIn == -1) {
+        while (uIn == -1) {
             try {
                 Scanner sc = new Scanner(System.in);
                 uIn = sc.nextInt();
             } catch (Exception e) {
                 uIn = -1;
             }
-            if(!(uIn <= 1 && uIn >= 0)) {
+            if (!(uIn <= 1 && uIn >= 0)) {
                 uIn = -1;
             }
         }
@@ -149,17 +149,17 @@ public class TuiHandler {
     }
 
     public static int askWhatDoUnitCell(UnitCell uc) {
-        System.out.print("Mit szeretnél csinálni az egységgel?\n: ");
-        System.out.print("[0] Támadás\n[1] Speciális képesség\n[2] Semmi (várakozás)\n: ");
+        System.out.print("Mit szeretnél csinálni az egységgel?\n");
+        System.out.print("[0] Támadás\n[1] Speciális képesség\n[2] Mozgás\n[3] Semmi (várakozás)\n: ");
         int uIn = -1;
-        while(uIn == -1) {
+        while (uIn == -1) {
             try {
                 Scanner sc = new Scanner(System.in);
                 uIn = sc.nextInt();
             } catch (Exception e) {
                 uIn = -1;
             }
-            if(!(uIn <= 2 && uIn >= 0)) {
+            if (!(uIn <= 3 && uIn >= 0)) {
                 uIn = -1;
             }
         }
@@ -167,6 +167,32 @@ public class TuiHandler {
     }
 
     public static Position askPosition() {
-
+        int uX = -1;
+        while (uX == -1) {
+            System.out.print("X koordináta: ");
+            try {
+                Scanner sc = new Scanner(System.in);
+                uX = sc.nextInt();
+            } catch (Exception e) {
+                uX = -1;
+            }
+            if (!(uX <= 12 && uX >= 1)) {
+                uX = -1;
+            }
+        }
+        int uY = -1;
+        while (uY == -1) {
+            System.out.print("Y koordináta: ");
+            try {
+                Scanner sc = new Scanner(System.in);
+                uY = sc.nextInt();
+            } catch (Exception e) {
+                uY = -1;
+            }
+            if (!(uY <= 10 && uY >= 1)) {
+                uY = -1;
+            }
+        }
+        return new Position(uX - 1, uY - 1);
     }
 }

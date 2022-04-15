@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerStats {
-    List<Stat> statsList = new ArrayList<>();
+    public List<Stat> statsList = new ArrayList<>();
 
-    Stat attack = new Stat("Támadás", 1);
-    Stat defense = new Stat("Védekezés", 1);
-    Stat magic = new Stat("Varázserö", 1);
-    Stat intelligence = new Stat("Tudás", 1);
-    Stat moral = new Stat("Morál", 1);
-    Stat luck = new Stat("Szerencse", 1);
+    public Stat attack = new Stat("Támadás", 1);
+    public Stat defense = new Stat("Védekezés", 1);
+    public Stat magic = new Stat("Varázserö", 1);
+    public Stat intelligence = new Stat("Tudás", 1);
+    public Stat moral = new Stat("Morál", 1);
+    public Stat luck = new Stat("Szerencse", 1);
 
 
     public class Stat {

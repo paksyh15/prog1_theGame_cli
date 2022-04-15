@@ -4,7 +4,6 @@ package thegame.gameElements.unit;
 
 import thegame.Main;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Unit {
@@ -17,6 +16,7 @@ public abstract class Unit {
     public String letter = null;
     public String name = null;
     public int lastBlowbackRound = 0; // utolsó kör, amelyikben visszatámadt
+    public int lastActionRound = 0;
     public boolean infBlowback;
 
     public Unit(int price, int damageMin, int damageMax, int health, int speed, int initiative, String letter, String name, boolean infBlowback) {
