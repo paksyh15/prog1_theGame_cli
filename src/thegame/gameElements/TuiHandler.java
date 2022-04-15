@@ -28,7 +28,8 @@ public class TuiHandler {
             Thread.sleep(16L);
             System.out.flush();
         } catch (Exception e) {
-            System.err.println(e.toString());
+            //  :D
+            System.out.print("\n\n\n\n\n\n\n\n");
         }
     }
 
