@@ -13,4 +13,9 @@ public class Assassin extends Unit {
     public Assassin() {
         super(price, damageMin, damageMax, health, speed, initiative, letter, name);
     }
+
+    @Override
+    public void afterHit(UnitCell damagerUc) {
+
+    }
 }

@@ -13,4 +13,9 @@ public class Archer extends Unit {
     public Archer() {
         super(price, damageMin, damageMax, health, speed, initiative, letter, name);
     }
+
+    @Override
+    public void afterHit(UnitCell damagerUc) {
+
+    }
 }

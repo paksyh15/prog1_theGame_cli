@@ -7,10 +7,15 @@ public class Peasant extends Unit {
     public static int health = 3;
     public static int speed = 4;
     public static int initiative = 8;
-    public static String letter = "P";
+    public static String letter = "F";
     public static String name = "Földmüves";
 
     public Peasant() {
         super(price, damageMin, damageMax, health, speed, initiative, letter, name);
+    }
+
+    @Override
+    public void afterHit(UnitCell damagerUc) {
+
     }
 }

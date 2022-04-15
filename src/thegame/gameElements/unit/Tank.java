@@ -13,4 +13,9 @@ public class Tank extends Unit {
     public Tank() {
         super(price, damageMin, damageMax, health, speed, initiative, letter, name);
     }
+
+    @Override
+    public void afterHit(UnitCell damagerUc) {
+
+    }
 }

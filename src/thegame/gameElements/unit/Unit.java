@@ -54,7 +54,6 @@ public abstract class Unit {
         return this.initiative;
     }
 
-    /*public void setHealth(int health) {
-        this.health = Math.max(health, 0);
-    }*/
+    public abstract void afterHit(UnitCell damagerUc);
+
 }
