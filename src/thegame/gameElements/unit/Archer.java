@@ -9,13 +9,9 @@ public class Archer extends Unit {
     public static int initiative = 9;
     public static String letter = "I";
     public static String name = "Ijász";
+    public static boolean infBlowback = false;
 
     public Archer() {
-        super(price, damageMin, damageMax, health, speed, initiative, letter, name);
-    }
-
-    @Override
-    public void afterHit(UnitCell me, UnitCell damagerUc) {
-
+        super(price, damageMin, damageMax, health, speed, initiative, letter, name, infBlowback);
     }
 }

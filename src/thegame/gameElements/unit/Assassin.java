@@ -9,13 +9,9 @@ public class Assassin extends Unit {
     public static int initiative = 13;
     public static String letter = "B";
     public static String name = "Bérgyilkos";
+    public static boolean infBlowback = false;
 
     public Assassin() {
-        super(price, damageMin, damageMax, health, speed, initiative, letter, name);
-    }
-
-    @Override
-    public void afterHit(UnitCell me, UnitCell damagerUc) {
-
+        super(price, damageMin, damageMax, health, speed, initiative, letter, name, infBlowback);
     }
 }

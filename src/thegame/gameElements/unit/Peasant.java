@@ -9,13 +9,9 @@ public class Peasant extends Unit {
     public static int initiative = 8;
     public static String letter = "F";
     public static String name = "Földmüves";
+    public static boolean infBlowback = false;
 
     public Peasant() {
-        super(price, damageMin, damageMax, health, speed, initiative, letter, name);
-    }
-
-    @Override
-    public void afterHit(UnitCell me, UnitCell damagerUc) {
-
+        super(price, damageMin, damageMax, health, speed, initiative, letter, name, infBlowback);
     }
 }

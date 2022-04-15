@@ -9,13 +9,9 @@ public class Tank extends Unit {
     public static int initiative = 8;
     public static String letter = "D";
     public static String name = "Dagadék";
+    public static boolean infBlowback = false;
 
     public Tank() {
-        super(price, damageMin, damageMax, health, speed, initiative, letter, name);
-    }
-
-    @Override
-    public void afterHit(UnitCell me, UnitCell damagerUc) {
-
+        super(price, damageMin, damageMax, health, speed, initiative, letter, name, infBlowback);
     }
 }

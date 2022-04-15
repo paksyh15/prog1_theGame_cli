@@ -4,11 +4,15 @@ import thegame.Main;
 import thegame.gameElements.magic.Magic;
 import thegame.gameElements.unit.UnitCell;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class TuiHandler {
     public static void pressEnterKey(String message) {
         try {
             System.out.println(message);
-            System.in.read();
+            Scanner sc = new Scanner(System.in);
+            sc.nextLine();
         } catch (Exception e) {
         }
     }
@@ -84,8 +88,28 @@ public class TuiHandler {
     }
 
     public static void printPlayerMagics(Player player) {
-        for(Magic magic : player.ownedMagic) {
+        for (Magic magic : player.ownedMagic) {
             System.out.printf("\s%s (%d mana)\n", magic.getName(), magic.getMana());
         }
+    }
+
+    public static void printRoundLine() {
+        System.out.printf("%d. kör\n", Main.gameLogic.numRound);
+    }
+
+    public static void printOrderedUnits(ArrayList<UnitCell> oUCs) {
+        for (UnitCell uc : oUCs) {
+            String colorStr;
+            if (uc.owner == Main.gameLogic.getPlayer(1))
+                colorStr = TextColors.GREEN;
+            else
+                colorStr = TextColors.RED;
+            System.out.printf(colorStr + "%dx %s (utolsónak %d hp); ",
+                    uc.amount,
+                    uc.unit.name,
+                    uc.edgeHP
+            );
+        }
+        System.out.print(TextColors.RESET + "\n");
     }
 }

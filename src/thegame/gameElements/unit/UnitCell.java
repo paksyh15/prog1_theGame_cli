@@ -28,7 +28,19 @@ public class UnitCell {
         throw new ExceptionNotOnBoard();
     }
 
+    public void getsHit(Integer incomingDamage) {
+
+    }
+
     public void afterHit(UnitCell damagerUc) {
+        this.unit.afterHit(this, damagerUc);
+    };
+
+    public void attackUnitCell(UnitCell targetUC) {
+        this.attackUnitCell(targetUC, false);
+    }
+
+    public void attackUnitCell(UnitCell targetUC, boolean isBlowback) {
 
     };
 }

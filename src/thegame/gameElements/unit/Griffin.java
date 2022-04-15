@@ -9,13 +9,9 @@ public class Griffin extends Unit {
     public static int initiative = 15;
     public static String letter = "G";
     public static String name = "Griff";
+    public static boolean infBlowback = true;
 
     public Griffin() {
-        super(price, damageMin, damageMax, health, speed, initiative, letter, name);
-    }
-
-    @Override
-    public void afterHit(UnitCell me, UnitCell damagerUc) {
-
+        super(price, damageMin, damageMax, health, speed, initiative, letter, name, infBlowback);
     }
 }

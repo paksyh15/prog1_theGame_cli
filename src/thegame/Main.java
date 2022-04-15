@@ -49,6 +49,6 @@ public class Main {
         TuiHandler.printPlayerMagics(gameLogic.getPlayer(2));
         TuiHandler.pressEnterKey("A játék kezdéséhez nyomj ENTER-t! ...");
         // kb full "hand-off" GameLogic-nak
-
+        gameLogic.battle();
     }
 }
