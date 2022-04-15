@@ -1,5 +1,6 @@
 package thegame.gameElements;
 
+import thegame.Main;
 import thegame.gameElements.unit.UnitCell;
 
 public class TuiHandler {
@@ -28,6 +29,7 @@ public class TuiHandler {
     }
 
     private static void printBoardLine() {
+        // TODO: board szélessége alapján (hvi)
         System.out.print(TextColors.BLUE);
         for(int j=0; j < 13; j++) {
             System.out.print("+");
@@ -55,6 +57,10 @@ public class TuiHandler {
                 if(uc == null) {
                     System.out.print(TextColors.BLUE + "\s\s|\s" + TextColors.RESET);
                 } else {
+                    if(uc.owner == Main.gameLogic.getPlayer(1))
+                        System.out.print(TextColors.GREEN);
+                    else
+                        System.out.print(TextColors.RED);
                     System.out.print(uc.unit.letter + TextColors.BLUE + "\s|\s" + TextColors.RESET);
                 }
                 System.out.print(TextColors.RESET);
