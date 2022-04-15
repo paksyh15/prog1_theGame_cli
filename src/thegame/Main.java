@@ -28,14 +28,16 @@ public class Main {
         System.out.printf("Nehézség beállitva. Kezdöarany: %d\n\n", gameLogic.getPlayer(1).getBalance());
         // mindenféle vásárlásolás
         buyProcess.askChooseBuy();  // nem töröljük mer bot még használhatja
-        ucpp = new UnitCellsPlacementProcess(Main.gameLogic.getPlayer(1));
-        ucpp.askPlaceAllUnits(Main.gameLogic.getPlayer(1));
+        ucpp = new UnitCellsPlacementProcess(gameLogic.getPlayer(1));
+        ucpp.askPlaceAllUnits(gameLogic.getPlayer(1));
         System.out.println("Elhelyezted az összes egységed!");
         // bot vásárlás
         BuyProcessBot bpb = new BuyProcessBot(new Random());
         bpb.doStuff();
         // bot vásárlás ok
         TuiHandler.pressEnterKey();
+        TuiHandler.clearSceen();
         TuiHandler.printBoard(gameLogic.board);
+
     }
 }

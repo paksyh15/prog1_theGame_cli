@@ -4,12 +4,16 @@ import thegame.Main;
 import thegame.gameElements.unit.UnitCell;
 
 public class TuiHandler {
-    public static void pressEnterKey() {
+    public static void pressEnterKey(String message) {
         try {
-            System.out.println("Folytatáshoz nyomj ENTER-t...");
+            System.out.println(message);
             System.in.read();
         } catch (Exception e) {
         }
+    }
+
+    public static void pressEnterKey() {
+        pressEnterKey("Folytatáshoz nyomj ENTER-t...");
     }
 
     public static void clearSceen() {
