@@ -37,6 +37,7 @@ public class Main {
         // bot vásárlás ok
         TuiHandler.pressEnterKey();
         TuiHandler.clearSceen();
+        // játékos 1 és 2 statok, varázslatok kiírása
         TuiHandler.printBoard(gameLogic.board);
         System.out.println(TextColors.GREEN + "Játékos tulajdonságai:" + TextColors.RESET);
         TuiHandler.printPlayerStats(gameLogic.getPlayer(1));
@@ -46,5 +47,8 @@ public class Main {
         TuiHandler.printPlayerMagics(gameLogic.getPlayer(1));
         System.out.println(TextColors.RED + "Ellenfél varázslatai:" + TextColors.RESET);
         TuiHandler.printPlayerMagics(gameLogic.getPlayer(2));
+        TuiHandler.pressEnterKey("A játék kezdéséhez nyomj ENTER-t! ...");
+        // kb full "hand-off" GameLogic-nak
+
     }
 }

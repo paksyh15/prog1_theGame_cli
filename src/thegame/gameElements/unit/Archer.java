@@ -15,7 +15,7 @@ public class Archer extends Unit {
     }
 
     @Override
-    public void afterHit(UnitCell damagerUc) {
+    public void afterHit(UnitCell me, UnitCell damagerUc) {
 
     }
 }

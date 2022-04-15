@@ -54,6 +54,6 @@ public abstract class Unit {
         return this.initiative;
     }
 
-    public abstract void afterHit(UnitCell damagerUc);
+    public abstract void afterHit(UnitCell me, UnitCell damagerUc);
 
 }

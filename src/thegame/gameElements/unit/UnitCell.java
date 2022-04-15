@@ -27,4 +27,8 @@ public class UnitCell {
         }
         throw new ExceptionNotOnBoard();
     }
+
+    public void afterHit(UnitCell damagerUc) {
+
+    };
 }
