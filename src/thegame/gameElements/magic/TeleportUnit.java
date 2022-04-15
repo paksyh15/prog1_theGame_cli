@@ -8,7 +8,7 @@ import thegame.gameElements.unit.UnitCell;
 public class TeleportUnit extends Magic {
     public static String name = "Egység teleportálása";
     public static Integer price = 130;
-    public static Integer mana = 30;
+    public static Integer mana = 25;
 
     public TeleportUnit() {
         super(name, price, mana);

@@ -38,6 +38,13 @@ public class Main {
         TuiHandler.pressEnterKey();
         TuiHandler.clearSceen();
         TuiHandler.printBoard(gameLogic.board);
-
+        System.out.println(TextColors.GREEN + "Játékos tulajdonságai:" + TextColors.RESET);
+        TuiHandler.printPlayerStats(gameLogic.getPlayer(1));
+        System.out.println(TextColors.RED + "Ellenfél tulajdonságai:" + TextColors.RESET);
+        TuiHandler.printPlayerStats(gameLogic.getPlayer(2));
+        System.out.println(TextColors.GREEN + "Játékos varázslatai:" + TextColors.RESET);
+        TuiHandler.printPlayerMagics(gameLogic.getPlayer(1));
+        System.out.println(TextColors.RED + "Ellenfél varázslatai:" + TextColors.RESET);
+        TuiHandler.printPlayerMagics(gameLogic.getPlayer(2));
     }
 }

@@ -7,8 +7,8 @@ import thegame.gameElements.unit.UnitCell;
 
 public class GameLogic {
 
-    private Player player1 = new Player();
-    private Player player2 = new Player(1000);
+    private final Player player1 = new Player();
+    private final Player player2 = new Player(1000);
     public Board board = new Board();
 
     public GameLogic() {

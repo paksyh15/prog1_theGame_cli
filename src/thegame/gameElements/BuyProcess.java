@@ -236,6 +236,9 @@ public class BuyProcess {
         player.setBalance(player.getBalance() - player.attrPrice);
         playerStat.setValue(playerStat.getValue() + 1);
         player.attrPrice = (int) (Math.ceil(player.attrPrice.doubleValue() * 1.1) + 0.5);
+        // ha mana, akk manát állítsuk
+        if(playerStat.getName().equals(player.stats.intelligence.name))
+            player.setMana(playerStat.getValue() * 10);
         return true;
     }
 
