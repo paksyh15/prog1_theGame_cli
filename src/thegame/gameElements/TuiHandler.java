@@ -1,6 +1,7 @@
 package thegame.gameElements;
 
 import thegame.Main;
+import thegame.errors.ExceptionNotOnBoard;
 import thegame.gameElements.magic.Magic;
 import thegame.gameElements.unit.UnitCell;
 
@@ -104,12 +105,68 @@ public class TuiHandler {
                 colorStr = TextColors.GREEN;
             else
                 colorStr = TextColors.RED;
-            System.out.printf(colorStr + "%dx %s (utolsónak %d hp); ",
-                    uc.amount,
-                    uc.unit.name,
-                    uc.edgeHP
-            );
+            try {
+                System.out.printf(colorStr + "%dx %s (utolsó hp: %d) [%d,%d]; ",
+                        uc.amount,
+                        uc.unit.name,
+                        uc.edgeHP,
+                        uc.getPosOnBoard(Main.gameLogic.board).getX(),
+                        uc.getPosOnBoard(Main.gameLogic.board).getY()
+                );
+            } catch (ExceptionNotOnBoard e) {
+                throw new RuntimeException(e); // elvileg soha
+            }
         }
         System.out.print(TextColors.RESET + "\n");
+    }
+
+    public static int askWhatDo(UnitCell nextUnit) {
+        System.out.println("Mit akarsz?");
+        try {
+            System.out.printf("[0] Cselekvés ezzel: %s\n[1] Varázslás\n: ",
+                    String.format("%dx %s (utolsó hp: %d) [%d,%d]; ",
+                    nextUnit.amount,
+                    nextUnit.unit.name,
+                    nextUnit.edgeHP,
+                    nextUnit.getPosOnBoard(Main.gameLogic.board).getX(),
+                    nextUnit.getPosOnBoard(Main.gameLogic.board).getY()));
+        } catch (ExceptionNotOnBoard e) {
+            throw new RuntimeException(e); // elvileg soha
+        }
+        int uIn = -1;
+        while(uIn == -1) {
+            try {
+                Scanner sc = new Scanner(System.in);
+                uIn = sc.nextInt();
+            } catch (Exception e) {
+                uIn = -1;
+            }
+            if(!(uIn <= 1 && uIn >= 0)) {
+                uIn = -1;
+            }
+        }
+        return uIn;
+    }
+
+    public static int askWhatDoUnitCell(UnitCell uc) {
+        System.out.print("Mit szeretnél csinálni az egységgel?\n: ");
+        System.out.print("[0] Támadás\n[1] Speciális képesség\n[2] Semmi (várakozás)\n: ");
+        int uIn = -1;
+        while(uIn == -1) {
+            try {
+                Scanner sc = new Scanner(System.in);
+                uIn = sc.nextInt();
+            } catch (Exception e) {
+                uIn = -1;
+            }
+            if(!(uIn <= 2 && uIn >= 0)) {
+                uIn = -1;
+            }
+        }
+        return uIn;
+    }
+
+    public static Position askPosition() {
+
     }
 }

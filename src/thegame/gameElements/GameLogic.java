@@ -66,7 +66,7 @@ public class GameLogic {
         oList.addAll(getPlayer(2).getAllPlacedCells());
         for (int i = 0; i <= oList.stream().count(); i++) {
             for (int j = 0; j < oList.stream().count() - 1; j++) {
-                if ((((UnitCell)oList.get(j)).unit).initiative < ((UnitCell)oList.get(j + 1)).unit.initiative) {
+                if ((oList.get(j).unit).initiative < oList.get(j + 1).unit.initiative) {
                     UnitCell temp = oList.get(j);
                     oList.set(j, oList.get(j + 1));
                     oList.set(j + 1, temp);
@@ -78,16 +78,45 @@ public class GameLogic {
 
     public void battle() {
         TuiHandler.clearSceen();
-        boolean isOver = false;
+        boolean isOver = false, isRoundOver = false;
         while (!isOver) {
             // round start
             numRound += 1;
-            TuiHandler.printRoundLine();
-            TuiHandler.printBoard(Main.gameLogic.board);
-            ArrayList<UnitCell> orderedUnits1 = getMoveOrderedUCs();
-            System.out.print("Az egységek következési sorrendben: ");
-            TuiHandler.printOrderedUnits(orderedUnits1);
-            isOver = true;
+            while (!isRoundOver) {
+                TuiHandler.printRoundLine();
+                TuiHandler.printBoard(Main.gameLogic.board);
+                ArrayList<UnitCell> orderedUnits = getMoveOrderedUCs();
+                System.out.print("Az egységek következési sorrendben: ");
+                TuiHandler.printOrderedUnits(orderedUnits);
+                Player curPlayer = orderedUnits.get(0).owner;
+                if(curPlayer == getPlayer(1)) {
+                    // enber gyün
+                    switch (TuiHandler.askWhatDo(orderedUnits.get(0))) {
+                        case 0:
+                            // egységgel csinálás
+                            UnitCell uc = orderedUnits.get(0);
+                            switch(TuiHandler.askWhatDoUnitCell(uc)) {
+                                case 0:
+
+                                    break;
+                                case 1:
+
+                                    break;
+                                case 2:
+
+                                    break;
+                            }
+                            break;
+                        case 1:
+                            // varázslás
+                            break;
+                    }
+
+                } else {
+                    // bot gyün
+                    // TODO: az egész bot kb
+                }
+            }
         }
     }
 
