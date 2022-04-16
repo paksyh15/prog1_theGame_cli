@@ -19,20 +19,23 @@ public class DeleteUnit extends Magic{
     }
 
     @Override
-    public boolean execute(Player player, Position pos) throws ExceptionUnsupported {
-        throw new ExceptionUnsupported();
-    }
-
-    @Override
-    public boolean execute(Player player, UnitCell uc) {
+    public boolean execute(Player player, Position pos)  {
+        UnitCell targetUc = Main.gameLogic.board.getBoardPos(pos);
         if(player.getMana() < this.getMana()) {
             return false;
         }
+        if(targetUc == null) return false;
+        if(targetUc.owner == player) return false;
         player.setMana(player.getMana() - this.getMana());
-        Main.gameLogic.setUnitToNull(uc);
+        Main.gameLogic.setUnitToNull(targetUc);
         return true;
     }
-
+    @Deprecated
+    @Override
+    public boolean execute(Player player, UnitCell uc) throws ExceptionUnsupported {
+        throw new ExceptionUnsupported();
+    }
+    @Deprecated
     @Override
     public boolean execute(Player player, UnitCell uc_which, Position toWhere) throws ExceptionUnsupported {
         throw new ExceptionUnsupported();

@@ -175,6 +175,33 @@ public class TuiHandler {
         return uIn;
     }
 
+    public static int askWhatDoMagic(Player player) {
+        if(player.ownedMagic.isEmpty()) {
+            System.out.println("Nincs egyetlen varázslatod sem!");
+            pressEnterKey();
+            return -1;
+        }
+        System.out.println("Melyik varázslatot szeretnéd használni?");
+        int i;
+        for(i = 0; i < player.ownedMagic.size(); i++) {
+            System.out.printf("[%d] %s - %d mana\n", i, player.ownedMagic.get(i).getName(), player.ownedMagic.get(i).getMana());
+        }
+        int uIn = -1;
+        while (uIn == -1) {
+            try {
+                Scanner sc = new Scanner(System.in);
+                uIn = sc.nextInt();
+            } catch (Exception e) {
+                uIn = -1;
+            }
+            if (!(uIn <= player.ownedMagic.size() - 1 && uIn >= 0)) {
+                uIn = -1;
+                System.out.print(": ");
+            }
+        }
+        return uIn;
+    }
+
     public static Position askPosition() {
         int uX = -1;
         while (uX == -1) {

@@ -4,6 +4,7 @@ package thegame.gameElements;
 
 import thegame.Main;
 import thegame.errors.ExceptionNotOnBoard;
+import thegame.errors.ExceptionUnsupported;
 import thegame.gameElements.unit.UnitCell;
 
 import java.util.ArrayList;
@@ -97,6 +98,7 @@ public class GameLogic {
     }
 
     public void battle() {
+        Main.gameLogic.player1.setMana(100000);
         TuiHandler.clearSceen();
         boolean isOver = false, isRoundOver = false;
         while (!isOver) {
@@ -159,7 +161,19 @@ public class GameLogic {
                             break;
                         case 1:
                             // varázslás
-
+                            int uMagic = TuiHandler.askWhatDoMagic(this.getPlayer(1));
+                            if(uMagic == -1) break;
+                            Position pos5 = TuiHandler.askPosition();
+                            try {
+                                if(this.getPlayer(1).ownedMagic.get(uMagic).execute(getPlayer(1), pos5)) {
+                                    this.getPlayer(1).lastActionRound = this.numRound;
+                                } else {
+                                    System.out.println("Varázslás sikertelen!");
+                                    TuiHandler.pressEnterKey();
+                                }
+                            } catch (ExceptionUnsupported e) {
+                                throw new RuntimeException(e);
+                            }
                             break;
                         case 2:
                             // támadás

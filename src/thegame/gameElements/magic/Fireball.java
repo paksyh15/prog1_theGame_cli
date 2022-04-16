@@ -46,8 +46,8 @@ public class Fireball extends Magic {
 
     @Override
     public boolean execute(Player player, Position pos)  {
-        if(player.getMana() >= this.getMana()) {
-            player.setMana(player.getMana() - this.getMana());
+        if(player.getMana() >= this.mana) {
+            player.setMana(player.getMana() - this.mana);
             for(int i = 0; i < this.searchPattern.length; i++) {
                 Position curPos = new Position(
                         pos.getX() + this.searchPattern[i].getX(),
@@ -60,12 +60,12 @@ public class Fireball extends Magic {
         }
         return false;
     }
-
+    @Deprecated
     @Override
     public boolean execute(Player player, UnitCell uc) throws ExceptionUnsupported {
         throw new ExceptionUnsupported();
     }
-
+    @Deprecated
     @Override
     public boolean execute(Player player, UnitCell uc_which, Position toWhere) throws ExceptionUnsupported {
         throw new ExceptionUnsupported();
