@@ -39,7 +39,9 @@ public class Fireball extends Magic {
             new Position(2, -2),
             new Position(2, -1)*/
     };
-
+    /**
+     * Létrehozza a Magic ősosztályú objektumot a jelen osztály adataival.
+     */
     public Fireball() {
         super(name, price, mana, searchPattern);
     }

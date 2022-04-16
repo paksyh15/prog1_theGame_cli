@@ -14,7 +14,9 @@ public class LightningBolt extends Magic{
             new Position(0, 0)
     };
     public static Integer baseDamage = 30;
-
+    /**
+     * Létrehozza a Magic ősosztályú objektumot a jelen osztály adataival.
+     */
     public LightningBolt() {
         super(name, price, mana, searchPattern);
     }

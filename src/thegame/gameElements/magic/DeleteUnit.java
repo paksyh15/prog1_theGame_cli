@@ -14,6 +14,9 @@ public class DeleteUnit extends Magic{
             new Position(0, 0)
     };
 
+    /**
+     * Létrehozza a Magic ősosztályú objektumot a jelen osztály adataival.
+     */
     public DeleteUnit() {
         super(name, price, mana, searchPattern);
     }

@@ -41,7 +41,7 @@ public class Tests {
         assertEquals(Main.gameLogic.getPlayer(2), Main.gameLogic.player2);
     }
     @Test
-    void testPlayerGetterWrong() {  // első szélsőséges input
+    void testPlayerGetterWrong() {
         assertNull(Main.gameLogic.getPlayer(3));
     }
     // 3
@@ -64,7 +64,7 @@ public class Tests {
         assertEquals(700, gl.player1.money);
     }
     @Test
-    void testDifficultySetterWrong() { // második szélsőséges input
+    void testDifficultySetterWrong() {
         GameLogic gl = new GameLogic();
         assertFalse(gl.setDifficulty(3));
     }

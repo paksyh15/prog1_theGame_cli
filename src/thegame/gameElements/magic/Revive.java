@@ -13,7 +13,9 @@ public class Revive extends Magic {
     public static final Position[] searchPattern = new Position[]{
             new Position(0, 0)
     };
-
+    /**
+     * Létrehozza a Magic ősosztályú objektumot a jelen osztály adataival.
+     */
     public Revive() {
         super(name, price, mana, searchPattern);
     }
