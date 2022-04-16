@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private Integer money = null;
+    public Integer money = null;
     // statok
     public PlayerStats stats = new PlayerStats();
     public List<UnitCell> ownedCells = new ArrayList<UnitCell>();

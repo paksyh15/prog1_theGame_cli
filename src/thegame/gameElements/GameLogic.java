@@ -12,8 +12,8 @@ import java.util.Iterator;
 
 public class GameLogic {
 
-    private final Player player1 = new Player();
-    private final Player player2 = new Player(1000);
+    public final Player player1 = new Player();
+    public final Player player2 = new Player(1000);
     public Board board = new Board();
     public Integer numRound = 0; // jelenlegi kör
 
@@ -33,6 +33,8 @@ public class GameLogic {
             case 2:
                 money = 700;
                 break;
+            default:
+                return false;
         }
 
         player1.setBalance(money);
