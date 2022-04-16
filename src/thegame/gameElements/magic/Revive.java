@@ -6,6 +6,9 @@ import thegame.gameElements.Player;
 import thegame.gameElements.Position;
 import thegame.gameElements.unit.UnitCell;
 
+/**
+ * varázslat, egy adott egység gyógyítása
+ */
 public class Revive extends Magic {
     public static String name = "Feltámasztás";
     public static Integer price = 120;

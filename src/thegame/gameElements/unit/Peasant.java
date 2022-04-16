@@ -2,6 +2,9 @@ package thegame.gameElements.unit;
 
 import thegame.gameElements.Position;
 
+/**
+ * egység; földműves alosztály
+ */
 public class Peasant extends Unit {
     public static int price = 2;
     public static int damageMin = 1;

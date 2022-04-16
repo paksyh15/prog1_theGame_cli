@@ -6,6 +6,9 @@ import thegame.gameElements.Player;
 import thegame.gameElements.Position;
 import thegame.gameElements.unit.UnitCell;
 
+/**
+ * varászlat, 3x3-as "tűzgolyó" dobása a pályára
+ */
 public class Fireball extends Magic {
     public static String name = "Tüzgolyó";
     public static Integer price = 120;

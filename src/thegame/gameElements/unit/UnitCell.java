@@ -9,6 +9,9 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * egy Unit objektum wrapper-osztály; ez az osztály adja a játékbeli egységcsoportok funkcionalitását
+ */
 public class UnitCell {
     public Unit unit;  //archer, griffin stb.. osztályokból példa objektum
     public Integer amount;  // egységek száma ezen a kockán

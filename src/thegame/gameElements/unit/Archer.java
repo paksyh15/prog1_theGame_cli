@@ -18,6 +18,9 @@ public class Archer extends Unit {
     public static String name = "Ijász";
     public static boolean infBlowback = false;
 
+    /**
+     * egység; íjász alosztály
+     */
     public Archer() {
         super(price, damageMin, damageMax, health, speed, initiative, letter, name, infBlowback);
     }

@@ -2,6 +2,9 @@ package thegame.gameElements;
 
 import thegame.gameElements.unit.UnitCell;
 
+/**
+ * a tényleges négyzetrácsot tárolja/manupilálja, amelyben a játék zajlik
+ */
 public class Board {
     public final UnitCell[][] boardCells = new UnitCell[12][10]; // x,y (oszlopszám/sorszám)
 

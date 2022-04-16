@@ -2,6 +2,9 @@ package thegame.errors;
 
 import java.security.PrivilegedActionException;
 
+/**
+ * Egy Exception alosztály, amely azt jelzi, hogy az adott UnitCell nem található a játéktérben, nincs lerakva a pályára.
+ */
 public class ExceptionNotOnBoard extends Exception {
     /**
      * Constructs a new exception with {@code null} as its detail message.

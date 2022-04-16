@@ -10,6 +10,9 @@ import thegame.gameElements.unit.UnitCell;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * ezen osztály példányosított másolata(i) felel(nek) a játék működéséért körről-körre
+ */
 public class GameLogic {
 
     public final Player player1 = new Player();

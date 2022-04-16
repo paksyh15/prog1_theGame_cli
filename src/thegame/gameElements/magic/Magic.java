@@ -5,6 +5,9 @@ import thegame.gameElements.Player;
 import thegame.gameElements.Position;
 import thegame.gameElements.unit.UnitCell;
 
+/**
+ * a Magic ősosztály; ebből származnak a játékban lévő varázslatok
+ */
 public abstract class Magic {
     public String name = null;
     public Integer price = null;

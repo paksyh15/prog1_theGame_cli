@@ -6,6 +6,9 @@ import thegame.gameElements.Player;
 import thegame.gameElements.Position;
 import thegame.gameElements.unit.UnitCell;
 
+/**
+ * varázslat, egy saját egység teleportálása a pályán
+ */
 public class TeleportUnit extends Magic {
     public static String name = "Egység teleportálása";
     public static Integer price = 130;

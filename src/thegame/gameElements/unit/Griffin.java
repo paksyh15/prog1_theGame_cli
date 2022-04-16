@@ -2,6 +2,9 @@ package thegame.gameElements.unit;
 
 import thegame.gameElements.Position;
 
+/**
+ * egység; griff alosztály
+ */
 public class Griffin extends Unit {
     public static int price = 15;
     public static int damageMin = 5;

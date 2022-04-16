@@ -3,6 +3,9 @@ package thegame.gameElements;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ezzel az osztállyal lehet kezelni tulajdonságpontokat, illetve azokat Hőshöz (játékoshoz) rendelni
+ */
 public class PlayerStats {
     public List<Stat> statsList = new ArrayList<>();
 

@@ -6,6 +6,9 @@ import thegame.gameElements.Player;
 import thegame.gameElements.Position;
 import thegame.gameElements.unit.UnitCell;
 
+/**
+ * varázslat, villámcsapás egy egységre
+ */
 public class LightningBolt extends Magic{
     public static String name = "Villámcsapás";
     public static Integer price = 60;

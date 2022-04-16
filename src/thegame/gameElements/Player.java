@@ -7,6 +7,9 @@ import thegame.gameElements.unit.UnitCell;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ez az osztály maga a Hős (a játékos), annak adatait, megvásárolt tulajdonait tartja számon
+ */
 public class Player {
     public Integer money = null;
     // statok

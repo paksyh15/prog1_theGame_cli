@@ -2,6 +2,9 @@ package thegame.errors;
 
 import java.security.PrivilegedActionException;
 
+/**
+ * Egy Exception alosztály, amely azt jelzi, hogy a meghívótt metódus a jelenlegi paraméterezés mellett nem támogatott.
+ */
 public class ExceptionUnsupported extends Exception{
     /**
      * Constructs a new exception with {@code null} as its detail message.

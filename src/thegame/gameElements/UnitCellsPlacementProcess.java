@@ -6,6 +6,9 @@ import thegame.gameElements.unit.UnitCell;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * ezen osztály segítségével zajlik le a játékos általi egységelhelyezési fázis
+ */
 public class UnitCellsPlacementProcess {
     private final Player player;
 

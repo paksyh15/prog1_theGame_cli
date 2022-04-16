@@ -2,6 +2,9 @@ package thegame.gameElements.unit;
 
 import thegame.gameElements.Position;
 
+/**
+ * egység; bérgyilkos alosztály
+ */
 public class Assassin extends Unit {
 
 

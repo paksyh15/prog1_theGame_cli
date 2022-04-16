@@ -1,5 +1,8 @@
 package thegame.gameElements;
 
+/**
+ * ez az osztály tárolja a terminálban használt színeket
+ */
 public class TextColors {
     public static final String RESET = "\u001B[0m";
     public static final String BLACK = "\u001B[30m";

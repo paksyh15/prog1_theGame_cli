@@ -9,6 +9,9 @@ import thegame.gameElements.unit.UnitCell;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * ez az osztály felelős a szöveges felhasználói felület kezeléséért
+ */
 public class TuiHandler {
     public static void pressEnterKey(String message) {
         try {

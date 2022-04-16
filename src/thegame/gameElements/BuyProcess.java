@@ -7,6 +7,9 @@ import thegame.gameElements.unit.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * ez az osztály kezeli a játékos vásárlásait
+ */
 public class BuyProcess {
 
 
@@ -72,18 +75,20 @@ public class BuyProcess {
             for (UnitCell uc : player.ownedCells) {
                 System.out.printf("%dx %s\n", uc.amount, uc.unit.name);
             }
-            System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Földmüves (%d pénz)\n[2] Ijász (%d pénz)\n[3] Griff (%d pénz)\n\n[4] Vissza\n: ",
+            System.out.printf("Mit akarsz?\n\nAranyad: " + Main.gameLogic.getPlayer(1).getBalance() + "\n\n[1] Földmüves (%d arany)\n[2] Ijász (%d arany)\n[3] Griff (%d arany)\n[4] Bérgyilkos (%d arany)\n[5] Dagadék (%d arany)\n\n[6] Vissza\n: ",
                     Peasant.price,
                     Archer.price,
-                    Griffin.price);
+                    Griffin.price,
+                    Assassin.price,
+                    Tank.price);
             Scanner sc = new Scanner(System.in);
             try {
                 uIn = sc.nextInt();
             } catch (Exception e) {
                 uIn = -1;
             }
-            if (!(uIn <= 4 && uIn >= 1)) uIn = -1;
-            if (uIn == 4) isUserDone = true;
+            if (!(uIn <= 6 && uIn >= 1)) uIn = -1;
+            if (uIn == 6) isUserDone = true;
         }
         if (isUserDone) return;
         Unit unitToBuy = (new Unit[]{new Peasant(), new Archer(), new Griffin()})[uIn - 1];

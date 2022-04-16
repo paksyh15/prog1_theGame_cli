@@ -6,6 +6,9 @@ import thegame.gameElements.Player;
 import thegame.gameElements.Position;
 import thegame.gameElements.unit.UnitCell;
 
+/**
+ * varázslat, egy egység törlése
+ */
 public class DeleteUnit extends Magic{
     public static String name = "Egység törlése";
     public static Integer price = 170;

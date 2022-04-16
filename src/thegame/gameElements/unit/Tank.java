@@ -2,6 +2,9 @@ package thegame.gameElements.unit;
 
 import thegame.gameElements.Position;
 
+/**
+ * egység; dagadék alosztály
+ */
 public class Tank extends Unit {
     public static int price = 10;
     public static int damageMin = 0;
