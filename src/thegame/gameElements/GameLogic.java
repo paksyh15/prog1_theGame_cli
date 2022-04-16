@@ -98,7 +98,6 @@ public class GameLogic {
     }
 
     public void battle() {
-        Main.gameLogic.player1.setMana(100000);
         TuiHandler.clearSceen();
         boolean isOver = false, isRoundOver = false;
         while (!isOver) {

@@ -74,12 +74,12 @@ public class UnitCell {
         if (crit_ > 1.5) {
             System.out.println(this.amount + "x " + this.unit.name + " támadása" + TextColors.YELLOW + " KRITIKUS!" + TextColors.RESET + " (2-es szorzó)");
         }
-        int outDmg = (int)
-                Math.ceil((double) this.unit.getDamageRnd(new Random()) *
+        int outDmg = (int) (
+                Math.round((double) this.unit.getDamageRnd(new Random()) *
                         (double) this.amount *
                         ((double) this.owner.stats.attack.getValue() * 0.1 + 1) *
                         ((double) crit_) *
-                        (isBlowback ? 0.5 : 1) +
+                        (isBlowback ? 0.5 : 1)) +
                         0.1);
         targetUC.receiveDamage(this, outDmg, isBlowback);
         return true;
