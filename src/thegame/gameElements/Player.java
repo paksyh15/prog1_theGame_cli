@@ -15,6 +15,7 @@ public class Player {
     public List<Magic> ownedMagic = new ArrayList<Magic>();
     public Integer attrPrice = 5;
     private Integer mana = 10; // alap, 1-es tudás
+    public int lastActionRound = 0;
 
     public Player(Integer money) {
         if (money >= 0)
@@ -59,5 +60,11 @@ public class Player {
 
     public void setMana(Integer mana) {
         this.mana = Math.max(mana, 0);
+    }
+
+    public boolean attack(UnitCell targetUc) {
+        if(this.lastActionRound == Main.gameLogic.numRound || targetUc == null || targetUc.owner == this) return false;
+        targetUc.receiveRawDamage(this.stats.attack.getValue() * 10);
+        return true;
     }
 }

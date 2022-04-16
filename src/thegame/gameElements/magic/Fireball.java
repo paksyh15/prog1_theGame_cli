@@ -10,6 +10,7 @@ public class Fireball extends Magic {
     public static Integer price = 120;
     public static Integer mana = 9;
     public static final Position[] searchPattern = new Position[]{
+            //  :D
             new Position(1, 0),
             new Position(1, 1),
             new Position(0, 1),
@@ -18,7 +19,6 @@ public class Fireball extends Magic {
             new Position(-1, -1),
             new Position(0, -1),
             new Position(1, -1),
-
             new Position(2, 0),
             new Position(2, 1),
             new Position(2, 2),

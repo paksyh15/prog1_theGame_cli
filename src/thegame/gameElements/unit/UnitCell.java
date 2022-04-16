@@ -50,6 +50,18 @@ public class UnitCell {
         }
     }
 
+    public void receiveRawDamage(Integer incomingDamage) {
+        this.edgeHP -= incomingDamage;
+        while (this.edgeHP <= 0) {
+            this.amount -= 1;
+            this.edgeHP += this.unit.health;
+        }
+        // széthalás ellenőrzés
+        if (this.amount <= 0) {
+            Main.gameLogic.setUnitToNull(this);
+        }
+    }
+
     public boolean attackUnitCell(UnitCell targetUC) {
         return this.attackUnitCell(targetUC, false);
     }

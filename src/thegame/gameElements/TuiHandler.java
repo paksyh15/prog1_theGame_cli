@@ -130,7 +130,7 @@ public class TuiHandler {
     public static int askWhatDo(UnitCell nextUnit) {
         System.out.println("Mit akarsz?");
         try {
-            System.out.printf("[0] Cselekvés ezzel: %s\n[1] Varázslás\n: ",
+            System.out.printf("[0] Cselekvés ezzel: %s\n[1] Varázslás\n[2] Támadás\n: ",
                     String.format("%dx %s (utolsó hp: %d) [%d,%d]; ",
                             nextUnit.amount,
                             nextUnit.unit.name,

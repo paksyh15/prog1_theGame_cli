@@ -112,7 +112,7 @@ public class GameLogic {
                                 case 0: // támad
                                     Position pos = TuiHandler.askPosition();
                                     if (uc.attackAt(pos)) {
-                                        uc.unit.lastActionRound = numRound;
+                                        uc.unit.lastActionRound = this.numRound;
                                     } else {
                                         System.out.println("Sikertelen támadás!");
                                         TuiHandler.pressEnterKey();
@@ -124,20 +124,27 @@ public class GameLogic {
                                 case 2: // mozgás
                                     Position pos2 = TuiHandler.askPosition();
                                     if (uc.moveTo(pos2)) {
-                                        uc.unit.lastActionRound = numRound;
+                                        uc.unit.lastActionRound = this.numRound;
                                     } else {
                                         System.out.println("Sikertelen mozgás!");
                                         TuiHandler.pressEnterKey();
                                     }
                                     break;
                                 case 3: // egység afk
-                                    uc.unit.lastActionRound = numRound;
+                                    uc.unit.lastActionRound = this.numRound;
                                     break;
                             }
                             break;
                         case 1:
                             // varázslás
                             break;
+                        case 2:
+                            // támadás
+                            Position pos3 = TuiHandler.askPosition();
+                            UnitCell targetUc3 = Main.gameLogic.board.getBoardPos(pos3);
+                            if (Main.gameLogic.getPlayer(1).attack(targetUc3)) {
+                                Main.gameLogic.getPlayer(1).lastActionRound = this.numRound;
+                            }
                     }
 
                 } else {
