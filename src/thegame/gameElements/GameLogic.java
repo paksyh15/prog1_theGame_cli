@@ -66,7 +66,7 @@ public class GameLogic {
         oList.addAll(getPlayer(2).getAllPlacedCells());
         for (int i = 0; i <= oList.stream().count(); i++) {
             for (int j = 0; j < oList.stream().count() - 1; j++) {
-                if ((oList.get(j).unit).initiative < oList.get(j + 1).unit.initiative) {
+                if ((oList.get(j).unit.initiative + oList.get(j).owner.stats.moral.getValue()) < (oList.get(j + 1).unit.initiative + oList.get(j + 1).owner.stats.moral.getValue())) {
                     UnitCell temp = oList.get(j);
                     oList.set(j, oList.get(j + 1));
                     oList.set(j + 1, temp);
@@ -122,7 +122,7 @@ public class GameLogic {
                                     break;
                                 case 2: // mozgás
                                     Position pos2 = TuiHandler.askPosition();
-                                    if(uc.moveTo(pos2)) {
+                                    if (uc.moveTo(pos2)) {
                                         uc.unit.lastActionRound = numRound;
                                     } else {
                                         System.out.println("Sikertelen mozgás!");
