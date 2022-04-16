@@ -148,7 +148,7 @@ public class TuiHandler {
             } catch (Exception e) {
                 uIn = -1;
             }
-            if (!(uIn <= 1 && uIn >= 0)) {
+            if (!(uIn <= 2 && uIn >= 0)) {
                 uIn = -1;
             }
         }

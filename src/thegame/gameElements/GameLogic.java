@@ -73,14 +73,27 @@ public class GameLogic {
                 }
             }
         }
-        Iterator it = oList.iterator();
+        Iterator<UnitCell> it = oList.iterator();
         while (it.hasNext()) {
-            UnitCell unitCell = (UnitCell) it.next();
+            UnitCell unitCell = it.next();
             if (unitCell.unit.lastActionRound == numRound) {
                 it.remove();
             }
         }
         return oList;
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    private int whoWon(ArrayList<UnitCell> ucList) {
+        boolean has1 = false, has2 = false;
+        for(UnitCell uc : ucList) {
+            if(uc.owner == Main.gameLogic.getPlayer(1)) has1 = true;
+            else if(uc.owner == Main.gameLogic.getPlayer(2)) has2 = true;
+            if( has1 && has2 ) return 0; // még senki
+        }
+        if(has1 && !has2) return 1; // enber
+        if(!has1 && has2) return 2; // bot
+        return 3; // mindketten vesztenek (mittomén nemtom lehet-e)
     }
 
     public void battle() {
@@ -100,6 +113,9 @@ public class GameLogic {
                 }
                 System.out.print("Az egységek következési sorrendben: ");
                 TuiHandler.printOrderedUnits(orderedUnits);
+                // vibe check
+
+                // vibe check over
                 TuiHandler.printPlayerMana(Main.gameLogic.getPlayer(1));
                 Player curPlayer = orderedUnits.get(0).owner;
                 if (curPlayer == getPlayer(1)) {
@@ -144,7 +160,11 @@ public class GameLogic {
                             UnitCell targetUc3 = Main.gameLogic.board.getBoardPos(pos3);
                             if (Main.gameLogic.getPlayer(1).attack(targetUc3)) {
                                 Main.gameLogic.getPlayer(1).lastActionRound = this.numRound;
+                            } else {
+                                System.out.println("Sikertelen támadás!");
+                                TuiHandler.pressEnterKey();
                             }
+                            break;
                     }
 
                 } else {
