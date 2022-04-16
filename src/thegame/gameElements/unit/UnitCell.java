@@ -2,10 +2,7 @@ package thegame.gameElements.unit;
 
 import thegame.Main;
 import thegame.errors.ExceptionNotOnBoard;
-import thegame.gameElements.Board;
-import thegame.gameElements.Player;
-import thegame.gameElements.Position;
-import thegame.gameElements.TuiHandler;
+import thegame.gameElements.*;
 
 import javax.swing.plaf.TableUI;
 import java.sql.Array;
@@ -61,14 +58,17 @@ public class UnitCell {
         if (targetUC == null) {
             return false;
         }
+        int crit_ = (new Random()).nextInt(1, 11) <= this.owner.stats.luck.getValue() ? 2 : 1;
+        if (crit_ > 1.5) {
+            System.out.println(this.amount + "x " + this.unit.name + " támadása" + TextColors.YELLOW + " KRITIKUS!" + TextColors.RESET + " (2-es szorzó)");
+        }
         int outDmg = (int)
                 Math.ceil((double) this.unit.getDamageRnd(new Random()) *
                         (double) this.amount *
                         ((double) this.owner.stats.attack.getValue() * 0.1 + 1) *
-                        ((new Random()).nextInt(1, 11) <= this.owner.stats.luck.getValue() ? 2 : 1) *
+                        ((double) crit_) *
                         (isBlowback ? 0.5 : 1) +
                         0.1);
-        System.out.println("én vagyok " + this.amount + " " + this.unit.name + " atk " + outDmg);
         targetUC.receiveDamage(this, outDmg, isBlowback);
         return true;
     }

@@ -100,6 +100,7 @@ public class GameLogic {
                 }
                 System.out.print("Az egységek következési sorrendben: ");
                 TuiHandler.printOrderedUnits(orderedUnits);
+                TuiHandler.printPlayerMana(Main.gameLogic.getPlayer(1));
                 Player curPlayer = orderedUnits.get(0).owner;
                 if (curPlayer == getPlayer(1)) {
                     // enber gyün
