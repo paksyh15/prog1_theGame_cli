@@ -61,8 +61,10 @@ public class UnitCell {
         int outDmg = (int)
                 Math.ceil((double) this.unit.getDamageRnd(new Random()) *
                         (double) this.amount *
-                        (double) this.owner.stats.attack.getValue() * // TODO: értelmesen
-                        ((new Random()).nextInt(1, 11) <= this.owner.stats.luck.getValue() ? 2 : 1));
+                        ((double) this.owner.stats.attack.getValue() * 0.1 + 1) *
+                        ((new Random()).nextInt(1, 11) <= this.owner.stats.luck.getValue() ? 2 : 1) *
+                        (isBlowback ? 0.5 : 1) +
+                        0.1);
         System.out.println("én vagyok " + this.amount + " " + this.unit.name + " atk " + outDmg);
         targetUC.receiveDamage(this, outDmg, isBlowback);
         return true;
