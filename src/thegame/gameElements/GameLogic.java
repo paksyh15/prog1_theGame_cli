@@ -3,6 +3,7 @@ package thegame.gameElements;
 //import thegame.MainWindow;
 
 import thegame.Main;
+import thegame.errors.ExceptionNotOnBoard;
 import thegame.gameElements.unit.UnitCell;
 
 import java.util.ArrayList;
@@ -50,14 +51,13 @@ public class GameLogic {
     }
 
     public void setUnitToNull(UnitCell uc) {
-        for (int i = 0; i < this.board.boardCells[0].length; i++) {
-            for (int j = 0; j < this.board.boardCells.length; j++) {
-                if (this.board.boardCells[j][i] == uc) {
-                    this.board.boardCells[j][i] = null;
-                    return;
-                }
-            }
+        Position ucPos;
+        try {
+            ucPos = uc.getPosOnBoard(this.board);
+        } catch (ExceptionNotOnBoard e) {
+            throw new RuntimeException(e); // elvileg soha
         }
+        this.board.boardCells[ucPos.getX()][ucPos.getY()] = null;
     }
 
     private ArrayList<UnitCell> getMoveOrderedUCs() {
@@ -74,9 +74,9 @@ public class GameLogic {
             }
         }
         Iterator it = oList.iterator();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             UnitCell unitCell = (UnitCell) it.next();
-            if(unitCell.unit.lastActionRound == numRound) {
+            if (unitCell.unit.lastActionRound == numRound) {
                 it.remove();
             }
         }
@@ -94,23 +94,23 @@ public class GameLogic {
                 TuiHandler.printRoundLine();
                 TuiHandler.printBoard(Main.gameLogic.board);
                 ArrayList<UnitCell> orderedUnits = getMoveOrderedUCs();
-                if(orderedUnits.stream().count() == 0) {
+                if (orderedUnits.stream().count() == 0) {
                     isRoundOver = true;
                     break;
                 }
                 System.out.print("Az egységek következési sorrendben: ");
                 TuiHandler.printOrderedUnits(orderedUnits);
                 Player curPlayer = orderedUnits.get(0).owner;
-                if(curPlayer == getPlayer(1)) {
+                if (curPlayer == getPlayer(1)) {
                     // enber gyün
                     switch (TuiHandler.askWhatDo(orderedUnits.get(0))) {
                         case 0: // aktív egységgel valamit
                             // egységgel csinálás
                             UnitCell uc = orderedUnits.get(0);
-                            switch(TuiHandler.askWhatDoUnitCell(uc)) {
+                            switch (TuiHandler.askWhatDoUnitCell(uc)) {
                                 case 0: // támad
                                     Position pos = TuiHandler.askPosition();
-                                    if(uc.attackAt(pos)) {
+                                    if (uc.attackAt(pos)) {
                                         uc.unit.lastActionRound = numRound;
                                     } else {
                                         System.out.println("Sikertelen támadás!");

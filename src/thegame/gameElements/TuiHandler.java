@@ -169,7 +169,7 @@ public class TuiHandler {
     public static Position askPosition() {
         int uX = -1;
         while (uX == -1) {
-            System.out.print("X koordináta: ");
+            System.out.print("Oszlopszám: ");
             try {
                 Scanner sc = new Scanner(System.in);
                 uX = sc.nextInt();
@@ -182,7 +182,7 @@ public class TuiHandler {
         }
         int uY = -1;
         while (uY == -1) {
-            System.out.print("Y koordináta: ");
+            System.out.print("Sorszám: ");
             try {
                 Scanner sc = new Scanner(System.in);
                 uY = sc.nextInt();

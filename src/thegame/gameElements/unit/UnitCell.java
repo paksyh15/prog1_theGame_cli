@@ -40,6 +40,10 @@ public class UnitCell {
             this.amount -= 1;
             this.edgeHP += this.unit.health;
         }
+        // széthalás ellenőrzés
+        if(this.amount <= 0) {
+            Main.gameLogic.setUnitToNull(this);
+        }
     }
 
     public boolean attackUnitCell(UnitCell targetUC) {
