@@ -39,8 +39,11 @@ public class UnitCell {
     public void receiveDamage(UnitCell damagerUc, Integer incomingDamage, boolean stopAttacking) {
         incomingDamage *= (int) Math.ceil(1.0 - (this.owner.stats.defense.getValue() * 0.05));
         this.edgeHP -= incomingDamage;
-        if (!stopAttacking) this.attackUnitCell(damagerUc, true);
-        while (edgeHP <= 0) {
+        if (!stopAttacking || this.unit.infBlowback) {
+            this.attackUnitCell(damagerUc, true);
+            this.unit.lastBlowbackRound = Main.gameLogic.numRound;
+        }
+        while (this.edgeHP <= 0) {
             this.amount -= 1;
             this.edgeHP += this.unit.health;
         }
@@ -94,6 +97,7 @@ public class UnitCell {
 
     public ArrayList<Position> getViablePositions(Board board) {
         final Position[] searchPattern = new Position[]{
+                new Position(0, 0),
                 new Position(1, 0),
                 new Position(1, 1),
                 new Position(0, 1),
@@ -101,7 +105,7 @@ public class UnitCell {
                 new Position(-1, 0),
                 new Position(-1, -1),
                 new Position(0, -1),
-                new Position(1, 1)
+                new Position(1, -1)
         };
         ArrayList<Position> viPoses = new ArrayList<>();
         ArrayList<Integer> expandedSteps = new ArrayList<>();

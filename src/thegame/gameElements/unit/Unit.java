@@ -3,6 +3,7 @@ package thegame.gameElements.unit;
 //import javafx.scene.image.Image;
 
 import thegame.Main;
+import thegame.gameElements.Position;
 
 import java.util.Random;
 
@@ -59,6 +60,7 @@ public abstract class Unit {
         return this.initiative;
     }
 
+
     public boolean afterHit(UnitCell me, UnitCell damagerUc) {
         if(this.infBlowback) {
             me.attackUnitCell(damagerUc, true);
@@ -71,6 +73,7 @@ public abstract class Unit {
             }
         }
         return false;
-    };
+    }
 
+    public abstract boolean specialAttack(UnitCell me, Position where);
 }

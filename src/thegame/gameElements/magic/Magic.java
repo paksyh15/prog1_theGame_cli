@@ -9,11 +9,13 @@ public abstract class Magic {
     public String name = null;
     public Integer price = null;
     public Integer mana = null;
+    public Position[] searchPattern;
 
-    public Magic(String name, Integer price, Integer mana) {
+    public Magic(String name, Integer price, Integer mana, Position[] sPattern) {
         this.name = name;
         this.price = price;
         this.mana = mana;
+        this.searchPattern = sPattern;
     }
 
     public String getName() {
@@ -31,4 +33,6 @@ public abstract class Magic {
     public abstract boolean execute(Player player, Position pos) throws ExceptionUnsupported;
     public abstract boolean execute(Player player, UnitCell uc, Position pos) throws ExceptionUnsupported;
     public abstract boolean execute(Player player, UnitCell uc) throws ExceptionUnsupported;
+
+
 }

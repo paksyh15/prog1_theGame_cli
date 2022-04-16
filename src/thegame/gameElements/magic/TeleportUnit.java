@@ -9,9 +9,12 @@ public class TeleportUnit extends Magic {
     public static String name = "Egység teleportálása";
     public static Integer price = 130;
     public static Integer mana = 25;
+    public static final Position[] searchPattern = new Position[]{
+            new Position(0, 0)
+    };
 
     public TeleportUnit() {
-        super(name, price, mana);
+        super(name, price, mana, searchPattern);
     }
 
     @Override

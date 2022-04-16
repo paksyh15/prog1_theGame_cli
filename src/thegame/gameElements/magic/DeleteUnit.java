@@ -10,9 +10,12 @@ public class DeleteUnit extends Magic{
     public static String name = "Egység törlése";
     public static Integer price = 170;
     public static Integer mana = 52;
+    public static final Position[] searchPattern = new Position[]{
+            new Position(0, 0)
+    };
 
     public DeleteUnit() {
-        super(name, price, mana);
+        super(name, price, mana, searchPattern);
     }
 
     @Override

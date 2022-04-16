@@ -9,9 +9,12 @@ public class Revive extends Magic {
     public static String name = "Feltámasztás";
     public static Integer price = 120;
     public static Integer mana = 6;
+    public static final Position[] searchPattern = new Position[]{
+            new Position(0, 0)
+    };
 
     public Revive() {
-        super(name, price, mana);
+        super(name, price, mana, searchPattern);
     }
 
     @Override

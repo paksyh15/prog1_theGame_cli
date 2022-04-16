@@ -1,5 +1,7 @@
 package thegame.gameElements.unit;
 
+import thegame.gameElements.Position;
+
 public class Peasant extends Unit {
     public static int price = 2;
     public static int damageMin = 1;
@@ -13,5 +15,10 @@ public class Peasant extends Unit {
 
     public Peasant() {
         super(price, damageMin, damageMax, health, speed, initiative, letter, name, infBlowback);
+    }
+
+    @Override
+    public boolean specialAttack(UnitCell me, Position where) {
+        return false;
     }
 }

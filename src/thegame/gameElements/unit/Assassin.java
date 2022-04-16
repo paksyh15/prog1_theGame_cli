@@ -1,6 +1,10 @@
 package thegame.gameElements.unit;
 
+import thegame.gameElements.Position;
+
 public class Assassin extends Unit {
+
+
     public static int price = 12;
     public static int damageMin = 8;
     public static int damageMax = 9;
@@ -13,5 +17,10 @@ public class Assassin extends Unit {
 
     public Assassin() {
         super(price, damageMin, damageMax, health, speed, initiative, letter, name, infBlowback);
+    }
+
+    @Override
+    public boolean specialAttack(UnitCell me, Position where) {
+        return false;
     }
 }
