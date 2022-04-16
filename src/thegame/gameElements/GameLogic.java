@@ -120,8 +120,14 @@ public class GameLogic {
                                 case 1: // egység spec képesség
 
                                     break;
-                                case 2: // garázsolás
-
+                                case 2: // mozgás
+                                    Position pos2 = TuiHandler.askPosition();
+                                    if(uc.moveTo(pos2)) {
+                                        uc.unit.lastActionRound = numRound;
+                                    } else {
+                                        System.out.println("Sikertelen mozgás!");
+                                        TuiHandler.pressEnterKey();
+                                    }
                                     break;
                                 case 3: // egység afk
                                     uc.unit.lastActionRound = numRound;
