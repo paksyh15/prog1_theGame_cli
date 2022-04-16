@@ -150,6 +150,7 @@ public class TuiHandler {
             }
             if (!(uIn <= 2 && uIn >= 0)) {
                 uIn = -1;
+                System.out.print(": ");
             }
         }
         return uIn;
@@ -168,6 +169,7 @@ public class TuiHandler {
             }
             if (!(uIn <= 3 && uIn >= 0)) {
                 uIn = -1;
+                System.out.print(": ");
             }
         }
         return uIn;

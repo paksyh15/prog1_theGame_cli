@@ -43,37 +43,12 @@ public class Archer extends Unit {
         }
         for(int i = 0; i < searchPattern.length; i++) {
             Position checkPos = new Position(mePos.getX() + searchPattern[i].getX(), mePos.getY() + searchPattern[i].getY());
-            if (checkPos.getX() < 0 || checkPos.getX() > 11 || checkPos.getY() < 0 || checkPos.getY() > 9) {
+            if (checkPos.getX() < 0 || checkPos.getX() > 11 || checkPos.getY() < 0 || checkPos.getY() > 9) continue;
                 UnitCell checkUc = Main.gameLogic.board.getBoardPos(checkPos);
                 if(checkUc == null) continue;
                 if(checkUc.owner != me.owner) return false;
-            }
         }
-        System.out.print("Hova szeretnél lőni?\n");
-        int uX = -1;
-        while(uX==-1){
-            try {
-                System.out.print("Oszlopszám: ");
-                Scanner sc = new Scanner(System.in);
-                uX = sc.nextInt();
-            } catch (Exception e) {
-                uX = -1;
-                continue;
-            }
-            if(uX < 1 || uX > 12) continue;
-        }
-        int uY = -1;
-        while(uY==-1){
-            try {
-                System.out.print("Sorszám: ");
-                Scanner sc = new Scanner(System.in);
-                uY = sc.nextInt();
-            } catch (Exception e) {
-                uY = -1;
-                continue;
-            }
-            if(uY < 1 || uY > 12) continue;
-        }
+        int uX = where.getX() + 1, uY = where.getY() + 1;
         Position pos = new Position(uX - 1, uY - 1);
         UnitCell targetUc = Main.gameLogic.board.getBoardPos(pos);
         if(targetUc == null) return false;

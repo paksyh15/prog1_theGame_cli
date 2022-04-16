@@ -135,7 +135,13 @@ public class GameLogic {
                                     }
                                     break;
                                 case 1: // egység spec képesség
-
+                                    Position pos4 = TuiHandler.askPosition();
+                                    if(uc.unit.specialAttack(uc, pos4)) {
+                                        uc.unit.lastActionRound = this.numRound;
+                                    } else {
+                                        System.out.println("Sikertelen különleges képesség használat!");
+                                        TuiHandler.pressEnterKey();
+                                    }
                                     break;
                                 case 2: // mozgás
                                     Position pos2 = TuiHandler.askPosition();
@@ -153,6 +159,7 @@ public class GameLogic {
                             break;
                         case 1:
                             // varázslás
+
                             break;
                         case 2:
                             // támadás
