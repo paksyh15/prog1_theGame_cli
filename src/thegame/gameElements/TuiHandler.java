@@ -1,5 +1,6 @@
 package thegame.gameElements;
 
+import org.w3c.dom.Text;
 import thegame.Main;
 import thegame.errors.ExceptionNotOnBoard;
 import thegame.gameElements.magic.Magic;
@@ -86,6 +87,12 @@ public class TuiHandler {
         for (PlayerStats.Stat stat : player.stats.statsList) {
             System.out.printf("\s%s: %d\n", stat.getName(), stat.getValue());
         }
+    }
+
+    public static void printPlayerMana(Player player) {
+        String strColor = (player == Main.gameLogic.getPlayer(1) ?
+                TextColors.GREEN : TextColors.RED);
+        System.out.print(strColor + "Te manád: " + TextColors.RESET + player.getMana() + "\n");
     }
 
     public static void printPlayerMagics(Player player) {
