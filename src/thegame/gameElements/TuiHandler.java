@@ -92,7 +92,7 @@ public class TuiHandler {
     public static void printPlayerMana(Player player) {
         String strColor = (player == Main.gameLogic.getPlayer(1) ?
                 TextColors.GREEN : TextColors.RED);
-        System.out.print(strColor + "Te manád: " + TextColors.RESET + player.getMana() + "\n");
+        System.out.print(strColor + "Mana: " + TextColors.RESET + player.getMana() + "\n");
     }
 
     public static void printPlayerMagics(Player player) {
@@ -117,8 +117,8 @@ public class TuiHandler {
                         uc.amount,
                         uc.unit.name,
                         uc.edgeHP,
-                        uc.getPosOnBoard(Main.gameLogic.board).getX(),
-                        uc.getPosOnBoard(Main.gameLogic.board).getY()
+                        uc.getPosOnBoard(Main.gameLogic.board).getX() + 1,
+                        uc.getPosOnBoard(Main.gameLogic.board).getY() + 1
                 );
             } catch (ExceptionNotOnBoard e) {
                 throw new RuntimeException(e); // elvileg soha
