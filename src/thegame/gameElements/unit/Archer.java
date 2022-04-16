@@ -1,6 +1,7 @@
 package thegame.gameElements.unit;
 
 import thegame.Main;
+import thegame.errors.ExceptionNotOnBoard;
 import thegame.gameElements.Position;
 
 import java.util.Random;
@@ -23,7 +24,31 @@ public class Archer extends Unit {
 
     @Override
     public boolean specialAttack(UnitCell me, Position where) {
-        // TODO: nem-e vannak körülötte, nem-e nem tud lőni
+        final Position[] searchPattern = new Position[]{
+                new Position(1, 0),
+                new Position(1, 1),
+                new Position(0, 1),
+                new Position(-1, 1),
+                new Position(-1, 0),
+                new Position(-1, -1),
+                new Position(0, -1),
+                new Position(1, -1)
+        };
+        Position mePos;
+        try {
+            mePos = me.getPosOnBoard(Main.gameLogic.board);
+        } catch (ExceptionNotOnBoard e) {
+            System.err.println("Az egység nem található a táblán!");
+            return false;
+        }
+        for(int i = 0; i < searchPattern.length; i++) {
+            Position checkPos = new Position(mePos.getX() + searchPattern[i].getX(), mePos.getY() + searchPattern[i].getY());
+            if (checkPos.getX() < 0 || checkPos.getX() > 11 || checkPos.getY() < 0 || checkPos.getY() > 9) {
+                UnitCell checkUc = Main.gameLogic.board.getBoardPos(checkPos);
+                if(checkUc == null) continue;
+                if(checkUc.owner != me.owner) return false;
+            }
+        }
         System.out.print("Hova szeretnél lőni?\n");
         int uX = -1;
         while(uX==-1){
