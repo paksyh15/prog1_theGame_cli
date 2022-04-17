@@ -11,8 +11,6 @@ import java.util.Scanner;
  * ez az osztály kezeli a játékos vásárlásait
  */
 public class BuyProcess {
-
-
     public int askDifficulty() {  // 0 / 1 / 2 / -1 err
         System.out.print("Nehézség\n\t[0] (könnyü)\n\t[1] (közepes)\n\t[2] Nehéz\n: ");
         Scanner sc = new Scanner(System.in);

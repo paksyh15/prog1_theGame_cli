@@ -161,6 +161,8 @@ public class GameLogic {
                                 case 3: // egység afk
                                     uc.unit.lastActionRound = this.numRound;
                                     break;
+                                case 4:
+                                    break;
                             }
                             break;
                         case 1:

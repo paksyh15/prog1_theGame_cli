@@ -138,8 +138,8 @@ public class TuiHandler {
                             nextUnit.amount,
                             nextUnit.unit.name,
                             nextUnit.edgeHP,
-                            nextUnit.getPosOnBoard(Main.gameLogic.board).getX(),
-                            nextUnit.getPosOnBoard(Main.gameLogic.board).getY()));
+                            nextUnit.getPosOnBoard(Main.gameLogic.board).getX() + 1,
+                            nextUnit.getPosOnBoard(Main.gameLogic.board).getY() + 1));
         } catch (ExceptionNotOnBoard e) {
             throw new RuntimeException(e); // elvileg soha
         }
@@ -161,7 +161,7 @@ public class TuiHandler {
 
     public static int askWhatDoUnitCell(UnitCell uc) {
         System.out.print("Mit szeretnél csinálni az egységgel?\n");
-        System.out.print("[0] Támadás\n[1] Speciális képesség\n[2] Mozgás\n[3] Semmi (várakozás)\n: ");
+        System.out.print("[0] Támadás\n[1] Speciális képesség\n[2] Mozgás\n[3] Semmi (várakozás)\n[4] Mégsem (vissza)\n: ");
         int uIn = -1;
         while (uIn == -1) {
             try {
@@ -170,7 +170,7 @@ public class TuiHandler {
             } catch (Exception e) {
                 uIn = -1;
             }
-            if (!(uIn <= 3 && uIn >= 0)) {
+            if (!(uIn <= 4 && uIn >= 0)) {
                 uIn = -1;
                 System.out.print(": ");
             }

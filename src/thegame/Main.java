@@ -5,6 +5,9 @@ import thegame.gameElements.unit.*;
 
 import java.util.Random;
 
+/**
+ * Ez a program belépési pontja, a fő metódusa
+ */
 public class Main {
 
     public static GameLogic gameLogic = new GameLogic();
