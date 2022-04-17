@@ -26,7 +26,6 @@ public class BuyProcess {
 
 
 
-    @Deprecated
     public void printPlayerStats(Player player, boolean isMenu) {
         if (!isMenu)
             System.out.printf("Támadás: %d\nVédekezés: %d\nVarázserő: %d\nTudás: %d\nMorál: %d\nSzerencse: %d\n", player.stats.attack.value, player.stats.defense.value, player.stats.magic.value, player.stats.intelligence.value, player.stats.moral.value, player.stats.luck.value);

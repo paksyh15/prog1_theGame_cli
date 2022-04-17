@@ -36,12 +36,10 @@ public class DeleteUnit extends Magic{
         Main.gameLogic.setUnitToNull(targetUc);
         return true;
     }
-    @Deprecated
     @Override
     public boolean execute(Player player, UnitCell uc) throws ExceptionUnsupported {
         throw new ExceptionUnsupported();
     }
-    @Deprecated
     @Override
     public boolean execute(Player player, UnitCell uc_which, Position toWhere) throws ExceptionUnsupported {
         throw new ExceptionUnsupported();

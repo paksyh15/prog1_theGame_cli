@@ -65,12 +65,10 @@ public class Fireball extends Magic {
         }
         return false;
     }
-    @Deprecated
     @Override
     public boolean execute(Player player, UnitCell uc) throws ExceptionUnsupported {
         throw new ExceptionUnsupported();
     }
-    @Deprecated
     @Override
     public boolean execute(Player player, UnitCell uc_which, Position toWhere) throws ExceptionUnsupported {
         throw new ExceptionUnsupported();

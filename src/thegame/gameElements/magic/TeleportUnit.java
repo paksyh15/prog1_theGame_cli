@@ -44,13 +44,11 @@ public class TeleportUnit extends Magic {
         return true;
     }
 
-    @Deprecated
     @Override
     public boolean execute(Player player, UnitCell uc) throws ExceptionUnsupported {
         throw new ExceptionUnsupported();
     }
 
-    @Deprecated
     @Override
     public boolean execute(Player player, UnitCell uc, Position pos) throws ExceptionUnsupported {
         throw new ExceptionUnsupported();

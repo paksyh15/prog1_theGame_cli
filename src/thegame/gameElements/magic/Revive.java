@@ -38,7 +38,6 @@ public class Revive extends Magic {
         targetUc.receiveHealing(player.stats.magic.getValue() * 50);
         return true;
     }
-    @Deprecated
     @Override
     public boolean execute(Player player, UnitCell uc) throws ExceptionUnsupported {
         throw new ExceptionUnsupported();
