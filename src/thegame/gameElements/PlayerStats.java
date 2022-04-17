@@ -16,7 +16,9 @@ public class PlayerStats {
     public Stat moral = new Stat("Morál", 1);
     public Stat luck = new Stat("Szerencse", 1);
 
-
+    /**
+     * Ez az osztály egy típusú tulajdonsággal kapcsolat adatok tárolására szolgál
+     */
     public class Stat {
         String name;
         Integer value;

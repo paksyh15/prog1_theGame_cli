@@ -85,6 +85,37 @@ public class UnitCell {
     }
 
     public boolean attackUnitCell(UnitCell targetUC, boolean isBlowback) {
+        final Position[] searchPattern = new Position[]{
+                new Position(1, 0),
+                new Position(1, 1),
+                new Position(0, 1),
+                new Position(-1, 1),
+                new Position(-1, 0),
+                new Position(-1, -1),
+                new Position(0, -1),
+                new Position(1, -1)
+        };
+        boolean tooFar = true;
+        for (int j = 0; j < searchPattern.length; j++) {
+            Position checkPos = searchPattern[j];
+            Position thisPos = null;
+            try {
+                thisPos = this.getPosOnBoard(Main.gameLogic.board);
+            } catch (ExceptionNotOnBoard e) {
+
+            }
+            if(thisPos == null) break;
+            Position curCheckPos = new Position(thisPos.getX() + checkPos.getX(), thisPos.getY() + checkPos.getY());
+            if (curCheckPos.getX() < 0 || curCheckPos.getX() > 11 || curCheckPos.getY() < 0 || curCheckPos.getY() > 9) continue;
+            UnitCell curCheckUnitCell = Main.gameLogic.board.getBoardPos(curCheckPos);
+            if(curCheckUnitCell == targetUC) {
+                tooFar = false;
+                break;
+            }
+        }
+
+        if(tooFar) return false;
+
         if (targetUC == null) {
             return false;
         }

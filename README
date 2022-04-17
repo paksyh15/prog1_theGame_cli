@@ -1,0 +1,19 @@
+A program minden ":" jel után felhasználói bementet vár, amelyek egész szám bármi egyéb írjásjel nélkül. A bevitel végét az ENTER billentyű leütése jelenti.
+
+Opciók magyarázata:
+Nehézség:
+[0] (könnyü) -> nehézséget könnyűre állítja be, pénz 1300
+[1] (közepes) -> nehézséget közepesre állítja be, pénz 1000
+[2] Nehéz -> nehézséget nehézre állítja be, pénz 700
+
+[1] Egységek vásárlása -> egységek vásárlása
+[2] Varázslatok vásárlása -> varázslatok vásárlása
+[3] Képességpontok vásárlása -> képességek vásárlása
+[4] Kész -> továbblép
+
+A többi egyértelműen fel van tűntetve a kérdés időpontjában.
+
+A program fordítása:
+1. Az src mappán belül nyiss egy terminált
+2. Futtasd le a következő parancsot: javac @sources.txt -encoding UTF-8
+3. 

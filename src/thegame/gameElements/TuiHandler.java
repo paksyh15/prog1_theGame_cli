@@ -192,6 +192,7 @@ public class TuiHandler {
         int uIn = -1;
         while (uIn == -1) {
             try {
+                System.out.print(": ");
                 Scanner sc = new Scanner(System.in);
                 uIn = sc.nextInt();
             } catch (Exception e) {

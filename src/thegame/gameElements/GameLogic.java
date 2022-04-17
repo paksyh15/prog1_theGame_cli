@@ -2,6 +2,7 @@ package thegame.gameElements;
 
 //import thegame.MainWindow;
 
+import org.w3c.dom.Text;
 import thegame.Main;
 import thegame.errors.ExceptionNotOnBoard;
 import thegame.errors.ExceptionUnsupported;
@@ -109,10 +110,12 @@ public class GameLogic {
             // round start
             this.numRound += 1;
             isRoundOver = false;
+            ArrayList<UnitCell> orderedUnitsDONOTTOUCH = getMoveOrderedUCs();
             while (!isRoundOver) {
                 TuiHandler.printRoundLine();
                 TuiHandler.printBoard(Main.gameLogic.board);
                 ArrayList<UnitCell> orderedUnits = getMoveOrderedUCs();
+
                 if (orderedUnits.stream().count() == 0) {
                     isRoundOver = true;
                     break;
@@ -120,7 +123,25 @@ public class GameLogic {
                 System.out.print("Az egységek következési sorrendben: ");
                 TuiHandler.printOrderedUnits(orderedUnits);
                 // vibe check
-
+                int winner = whoWon(orderedUnitsDONOTTOUCH);
+                switch (winner) {
+                    case 0:
+                        break;
+                    case 1:
+                        System.out.println(TextColors.GREEN + "Te nyertél!");
+                        break;
+                    case 2:
+                        System.out.println(TextColors.RED + "Az ellenség nyert.");
+                        break;
+                    case 3:
+                        System.out.println(TextColors.YELLOW + "Döntetlen!");
+                        break;
+                }
+                if(winner > 0 ) {
+                    TuiHandler.pressEnterKey("Nyomj ENTER-t a játékból való kilépéshez...");
+                    System.out.print(TextColors.RESET);
+                    System.exit(0);
+                }
                 // vibe check over
                 TuiHandler.printPlayerMana(Main.gameLogic.getPlayer(1));
                 Player curPlayer = orderedUnits.get(0).owner;
