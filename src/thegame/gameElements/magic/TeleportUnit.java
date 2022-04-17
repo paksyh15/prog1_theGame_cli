@@ -4,7 +4,10 @@ import thegame.Main;
 import thegame.errors.ExceptionUnsupported;
 import thegame.gameElements.Player;
 import thegame.gameElements.Position;
+import thegame.gameElements.TuiHandler;
 import thegame.gameElements.unit.UnitCell;
+
+import javax.swing.plaf.TableUI;
 
 /**
  * varázslat, egy saját egység teleportálása a pályán
@@ -30,9 +33,14 @@ public class TeleportUnit extends Magic {
             return false;
         }
         if(targetUc == null) return false;
-        if(targetUc.owner == player) return false;
+        if(targetUc.owner != player) return false;
+        // hova?
+        System.out.println("Hová teleportáljon az egység?");
+        Position toPos = TuiHandler.askPosition();
+        if(Main.gameLogic.board.getBoardPos(toPos) != null) return false;
         player.setMana(player.getMana() - this.getMana());
         Main.gameLogic.setUnitToNull(targetUc);
+        Main.gameLogic.board.setToBoard(targetUc, toPos);
         return true;
     }
 

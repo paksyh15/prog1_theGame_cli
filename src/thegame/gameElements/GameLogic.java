@@ -145,7 +145,7 @@ public class GameLogic {
                                     if(uc.unit.specialAttack(uc, pos4)) {
                                         uc.unit.lastActionRound = this.numRound;
                                     } else {
-                                        System.out.println("Sikertelen különleges képesség használat!");
+                                        System.out.println("Sikertelen különleges képesség használat! Lehetséges okok: az egység nem rendelkezik ilyennel; a támadott egység saját; a pozíción nincs egység");
                                         TuiHandler.pressEnterKey();
                                     }
                                     break;
@@ -161,7 +161,7 @@ public class GameLogic {
                                 case 3: // egység afk
                                     uc.unit.lastActionRound = this.numRound;
                                     break;
-                                case 4:
+                                case 4: // cancel
                                     break;
                             }
                             break;

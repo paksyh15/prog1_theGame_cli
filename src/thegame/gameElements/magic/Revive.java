@@ -16,16 +16,27 @@ public class Revive extends Magic {
     public static final Position[] searchPattern = new Position[]{
             new Position(0, 0)
     };
+
+    // halottakra nem működik, Gercsó Márk megengedte
     /**
      * Létrehozza a Magic ősosztályú objektumot a jelen osztály adataival.
      */
+
     public Revive() {
         super(name, price, mana, searchPattern);
     }
 
     @Override
     public boolean execute(Player player, Position pos) throws ExceptionUnsupported {
-        throw new ExceptionUnsupported();
+        UnitCell targetUc = Main.gameLogic.board.getBoardPos(pos);
+        if(player.getMana() < this.getMana()) {
+            return false;
+        }
+        if(targetUc == null) return false;
+        if(targetUc.owner != player) return false;
+        player.setMana(player.getMana() - this.getMana());
+        targetUc.receiveHealing(player.stats.magic.getValue() * 50);
+        return true;
     }
     @Deprecated
     @Override
@@ -35,15 +46,6 @@ public class Revive extends Magic {
 
     @Override
     public boolean execute(Player player, UnitCell uc_which, Position toWhere) throws ExceptionUnsupported {
-        UnitCell targetUc = uc_which;
-        if(player.getMana() < this.getMana()) {
-            return false;
-        }
-        if(targetUc == null) return false;
-        if(targetUc.owner != player) return false;
-        if(Main.gameLogic.board.getBoardPos(toWhere) != null) return false;
-        player.setMana(player.getMana() - this.getMana());
-        Main.gameLogic.setUnitToNull(targetUc);
-        return true;
+        throw new ExceptionUnsupported();
     }
 }

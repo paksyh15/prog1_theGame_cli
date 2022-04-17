@@ -15,6 +15,7 @@ import java.util.Random;
 public class UnitCell {
     public Unit unit;  //archer, griffin stb.. osztályokból példa objektum
     public Integer amount;  // egységek száma ezen a kockán
+    public final Integer originalAmount;
     public Integer edgeHP;  // csak egy egység életét követjük, mert egyesével halnak meg
     public Player owner;
 
@@ -22,6 +23,7 @@ public class UnitCell {
     public UnitCell(Unit unit, Integer amount) {
         this.unit = unit;
         this.amount = amount;
+        this.originalAmount = amount;
         this.edgeHP = this.unit.health;
     }
 
@@ -34,6 +36,19 @@ public class UnitCell {
             }
         }
         throw new ExceptionNotOnBoard();
+    }
+
+    public void receiveHealing(Integer incomingHealing) {
+        this.edgeHP += incomingHealing;
+        while(edgeHP > this.unit.health) {
+            this.amount += 1;
+            this.edgeHP -= this.unit.health;
+            if(this.amount > this.originalAmount) {
+                this.amount = this.originalAmount;
+                this.edgeHP = this.unit.health;
+                break;
+            }
+        }
     }
 
     public void receiveDamage(UnitCell damagerUc, Integer incomingDamage, boolean stopAttacking) {
